@@ -1,0 +1,121 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>泽雷特运维APP — 项目总览</title>
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0D47A1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="泽雷特运维">
+<link rel="apple-touch-icon" href="app-icon-192.png">
+<style>
+  :root {
+    --blue: #0D47A1; --cyan: #27C3C4; --dark: #142824;
+    --bg: #F4F6F8; --surface: #FFFFFF; --fg: #1A1A2E; --muted: #6B7280; --border: #E5E7EB;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    background: var(--bg); color: var(--fg); padding: 24px 16px;
+    max-width: 900px; margin: 0 auto; -webkit-font-smoothing: antialiased;
+  }
+  .hero { text-align: center; padding: 40px 0 32px; }
+  .hero .logo { margin-bottom: 12px; }
+  .hero .logo img { max-width: 200px; height: auto; }
+  .hero h1 { font-size: 28px; font-weight: 800; color: var(--blue); }
+  .hero p { font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .platform-section { margin-bottom: 32px; }
+  .platform-section h2 { font-size: 15px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .platform-tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--blue); color: #fff; }
+  .platform-tag.android { background: #3DDC84; color: #000; }
+  .screen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .screen-card { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); transition: transform .15s, box-shadow .15s; text-decoration: none; color: inherit; display: block; }
+  .screen-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+  .screen-card .preview { height: 300px; background: linear-gradient(135deg, #E8EAF6, #E3F2FD); display: flex; align-items: flex-start; justify-content: center; position: relative; overflow: hidden; }
+  .screen-card .preview.android-preview { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+  .screen-card .preview iframe { width: 375px; height: 720px; border: none; border-radius: 18px; box-shadow: 0 8px 24px rgba(0,0,0,.12); margin-top: 12px; transform: scale(0.38); transform-origin: top center; pointer-events: none; }
+  .screen-card .info { padding: 14px 16px; }
+  .screen-card .info h3 { font-size: 15px; font-weight: 700; }
+  .screen-card .info .desc { font-size: 12px; color: var(--muted); margin-top: 3px; }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="logo"><img src="logo.png" alt="泽雷特" style="height:64px;vertical-align:middle"></div>
+    <h1>泽雷特智能运维平台</h1>
+    <p>数据中心运维管理APP · iOS + Android 双端 · 5页面架构</p>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px">
+      告警推送 · 设备巡检 · 工单管理 · 产品展示 · 在线询价
+    </p>
+  </div>
+
+  <!-- iOS Section -->
+  <div class="platform-section">
+    <h2>🍎 iOS App <span class="platform-tag">Apple HIG</span></h2>
+    <div class="screen-grid">
+      <a class="screen-card" href="screens_ios-login.html" target="_blank">
+        <div class="preview"><iframe src="screens_ios-login.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>登录页</h3><div class="desc">手机号+验证码+密码登录 · 品牌页设计</div></div>
+      </a>
+      <a class="screen-card" href="screens_ios-dashboard.html" target="_blank">
+        <div class="preview"><iframe src="screens_ios-dashboard.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>设备概览</h3><div class="desc">机房健康仪表盘 · 告警统计 · 今日巡检 · 快捷入口</div></div>
+      </a>
+      <a class="screen-card" href="screens_ios-alarms.html" target="_blank">
+        <div class="preview"><iframe src="screens_ios-alarms.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>告警中心</h3><div class="desc">三级告警筛选 · 详情卡片 · 处理/确认操作 · 筛选标签</div></div>
+      </a>
+      <a class="screen-card" href="screens_ios-inspection.html" target="_blank">
+        <div class="preview"><iframe src="screens_ios-inspection.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>设备巡检</h3><div class="desc">巡检计划 · 打卡清单 · 进度追踪 · 拍照上传</div></div>
+      </a>
+      <a class="screen-card" href="screens_ios-tickets.html" target="_blank">
+        <div class="preview"><iframe src="screens_ios-tickets.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>工单管理</h3><div class="desc">待处理/进行中/已完成 · 指派工程师 · 进度追踪</div></div>
+      </a>
+      <a class="screen-card" href="screens_ios-products.html" target="_blank">
+        <div class="preview"><iframe src="screens_ios-products.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>产品中心</h3><div class="desc">7大产品线 · 热门推荐 · 在线询价表单 · 品牌色卡片</div></div>
+      </a>
+      <a class="screen-card" href="screens_ios-profile.html" target="_blank">
+        <div class="preview"><iframe src="screens_ios-profile.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>个人中心</h3><div class="desc">用户信息 · 数据统计 · 菜单导航 · 退出登录</div></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Android Section -->
+  <div class="platform-section">
+    <h2>🤖 Android App <span class="platform-tag android">Material 3</span></h2>
+    <div class="screen-grid">
+      <a class="screen-card" href="screens_android-dashboard.html" target="_blank">
+        <div class="preview android-preview"><iframe src="screens_android-dashboard.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>仪表盘</h3><div class="desc">Material 3 顶部栏 · Chip导航 · 状态芯片 · 底部导航栏</div></div>
+      </a>
+      <a class="screen-card" href="screens_android-alarms.html" target="_blank">
+        <div class="preview android-preview"><iframe src="screens_android-alarms.html" loading="lazy"></iframe></div>
+        <div class="info"><h3>告警中心</h3><div class="desc">Material 3 Chip筛选 · 卡片列表 · Filled/Tonal按钮</div></div>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:32px 0;font-size:12px;color:var(--muted)">
+    <p>© 河北泽雷特电子科技有限公司 · 18603311919 · gl@zltdata.com</p>
+    <p style="margin-top:4px">高新技术企业 · 16项专利 · 自有工厂 · ISO9001/14001/45001</p>
+  </footer>
+  <script>
+    // 注册 Service Worker (PWA离线缓存)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function(reg) {
+        console.log('[PWA] Service Worker registered:', reg.scope);
+      }).catch(function(err) {
+        console.warn('[PWA] SW registration failed:', err);
+      });
+    }
+  </script>
+</body>
+</html>

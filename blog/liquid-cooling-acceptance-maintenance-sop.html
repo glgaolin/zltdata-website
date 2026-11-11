@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<title>液冷机柜验收与运维 SOP：从 FAT 出厂验收到日/周/月/季/年巡检表 | 泽雷特 THELEADER</title>
+<meta name="description" content="液冷机柜落地执行的完整 SOP：FAT出厂验收9项、到货开箱检查、真空注液与脱气、流量平衡标定、SAT现场验收、日常/周/月/季/年五级巡检表、常见故障处置树、漏液应急三步决策、备件清单。">
+<meta name="keywords" content="液冷机柜验收,FAT验收,注液脱气,流量平衡,液冷运维,巡检表,漏液应急,液冷SOP,数据中心运维">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://www.zltdata.com/blog/liquid-cooling-acceptance-maintenance-sop.html">
+<meta property="og:title" content="液冷机柜验收与运维 SOP：出厂验收 9 项、注液脱气、流量平衡、巡检表、故障树">
+<meta property="og:description" content="液冷机柜落地执行的完整 SOP：FAT出厂验收9项、到货开箱检查、真空注液与脱气、流量平衡标定、SAT现场验收、日常/周/月/季/年五级巡检表、常见故障处置树、漏液应急三步决策、备件清单。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.zltdata.com/blog/liquid-cooling-acceptance-maintenance-sop.html">
+<meta property="og:image" content="https://www.zltdata.com/images/og-image.jpg">
+<meta property="og:site_name" content="泽雷特 THELEADER">
+<meta property="article:published_time" content="2026-10-21">
+<meta property="article:author" content="高林">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.zltdata.com/images/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "液冷机柜验收与运维 SOP：出厂验收 9 项、注液脱气、流量平衡、巡检表、故障树", "description": "液冷机柜落地执行的完整 SOP：FAT出厂验收9项、到货开箱检查、真空注液与脱气、流量平衡标定、SAT现场验收、日常/周/月/季/年五级巡检表、常见故障处置树、漏液应急三步决策、备件清单。", "author": {"@type": "Person", "@id": "https://www.zltdata.com/about/gao-lin.html#person", "name": "高林", "url": "https://www.zhihu.com/people/gao-lin-95-79-41"}, "publisher": {"@id": "https://www.zltdata.com/#organization"}, "datePublished": "2026-10-21", "dateModified": "2026-10-21", "mainEntityOfPage": "https://www.zltdata.com/blog/liquid-cooling-acceptance-maintenance-sop.html", "image": "https://www.zltdata.com/images/og-image.jpg", "inLanguage": "zh-CN", "about": ["液冷机柜", "FAT验收", "液冷运维", "巡检", "漏液应急"], "wordCount": 6011}</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.zltdata.com/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://www.zltdata.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "液冷机柜验收与运维 SOP：出厂验收 9 项、注液脱气、流量"}]}</script>
+<style>:root{--teal:#27C3C4;--dark:#142824;--blue:#0d47a1;--white:#fff;--gray:#8A9A96;--gray-l:#F5F7F7;--border:#E2E7EA;--text:#333}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",-apple-system,sans-serif;color:var(--text);line-height:2;background:var(--white)}nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.nav-inner{max-width:1260px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}.nav-brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--dark);text-decoration:none}.nav-brand img{height:36px}article{max-width:780px;margin:0 auto;padding:48px 24px 80px}h1{font-size:clamp(24px,4vw,36px);font-weight:900;color:var(--dark);margin-bottom:16px;line-height:1.4}.meta{font-size:13px;color:var(--gray);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.meta a{color:var(--blue);text-decoration:none}.summary-box{background:var(--gray-l);padding:20px 28px;border-radius:10px;margin-bottom:32px;font-size:16px;border-left:4px solid var(--teal)}h2{font-size:22px;font-weight:700;color:var(--dark);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--teal)}h3{font-size:18px;font-weight:700;color:var(--dark);margin:28px 0 12px}h4{font-size:16px;font-weight:700;color:var(--dark);margin:22px 0 10px}p{margin:0 0 18px;font-size:16px}blockquote{background:var(--gray-l);padding:16px 24px;border-radius:8px;margin:24px 0;border-left:4px solid var(--teal);font-size:15px;color:#555}blockquote strong{color:var(--dark)}strong{color:var(--dark)}ul,ol{margin:0 0 18px 24px}li{font-size:16px;margin-bottom:6px}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px}th,td{border:1px solid var(--border);padding:10px 14px;text-align:left}th{background:var(--gray-l);font-weight:700;color:var(--dark)}.cta-box{background:linear-gradient(135deg,var(--blue),var(--dark));color:var(--white);padding:28px 32px;border-radius:14px;margin:40px 0;text-align:center}.cta-box a{color:var(--teal);font-weight:700;text-decoration:none}footer{background:var(--dark);color:rgba(255,255,255,.55);text-align:center;padding:32px 24px;font-size:13px;line-height:2}footer a{color:var(--teal);text-decoration:none}@media(max-width:768px){article{padding:32px 16px}h1{font-size:22px}p,li{font-size:15px}table{font-size:13px}th,td{padding:8px 10px}}
+.author-box{background:linear-gradient(135deg,var(--dark),var(--blue));color:var(--white);padding:32px;border-radius:12px;margin-top:40px;line-height:1.8}
+.author-box .name{font-size:18px;font-weight:700;color:var(--teal);margin-bottom:8px}
+.author-box p{font-size:14px;opacity:.9;margin-bottom:0}
+.author-box .contact{font-size:13px;opacity:.75;margin-top:12px}
+
+h2{margin-top:44px;padding-left:12px;border-left:4px solid var(--teal)}
+h3{margin-top:30px;color:var(--dark)}
+h4{margin-top:22px}
+ul,ol{padding-left:26px;margin:14px 0}
+li{margin:6px 0}
+table{display:block;overflow-x:auto;max-width:100%}
+pre{background:var(--gray-l);border:1px solid var(--border);border-radius:6px;padding:14px 16px;overflow-x:auto;line-height:1.7;font-size:14px;margin:16px 0}
+code{background:var(--gray-l);padding:1px 5px;border-radius:3px;font-size:14px}
+.related-box{background:var(--gray-l);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin:34px 0 0}
+.related-box h3{margin:0 0 10px;font-size:17px;color:var(--dark)}
+.related-box ul{padding-left:22px;margin:0}
+.related-box li{margin:5px 0;font-size:15px}
+</style>
+</head><body>
+<nav><div class="nav-inner"><a href="../index.html" class="nav-brand"><img src="../images/logo.png" alt="泽雷特">THELEADER 泽雷特</a></div></nav>
+
+<article>
+<h1>液冷机柜验收与运维 SOP：出厂验收 9 项、注液脱气、流量平衡、巡检表、故障树</h1>
+<div class="meta">2026-10-21 · 河北泽雷特-老高 · 原创</div>
+
+<div class="summary-box"><strong>导读：</strong>液冷系统出事，八成出在验收和运维这两段。这篇把从出厂验收、注液脱气、流量平衡标定，到日周月季年五级巡检、故障树、漏液应急决策、备件清单，全部做成可执行的表格和清单。</div>
+
+<p>液冷这个东西，行业里有句话：<strong>三分产品、七分安装、十二分运维。</strong></p>
+
+<p>我深以为然，甚至觉得运维的分量还要更重一点。</p>
+
+<p>为什么？因为液冷系统是一个"活的"系统。它里面有流动的液体、转动的泵、会老化的密封件、会降解的工质、会滋生的微生物。风冷系统坏了，大不了是热；液冷系统出问题，轻则降频停机，重则损坏价值几十上百万的 GPU。</p>
+
+<p>而绝大多数事故的根源，不是设备本身不行，是<strong>验收时没盯住、运维时没管住</strong>。</p>
+
+<p>这篇我把液冷机柜从出厂到运维的全流程 SOP 写出来。这不是理论，是我们给客户做交付和培训时的实际操作手册。你可以直接拿去用，也可以拿去对照你供应商的方案，看看他们有没有做到位。</p>
+
+<hr>
+
+<h2>一、验收的三个关口</h2>
+
+<p>液冷系统的验收，不是"货到了签收"这一件事，它是三个关口：</p>
+
+<table>
+<tr><th>关口</th><th>英文</th><th>在哪做</th><th>谁负责</th><th>关键性</th></tr>
+<tr><td><strong>出厂验收</strong></td><td>FAT（Factory Acceptance Test）</td><td>制造厂</td><td>甲方 + 集成方</td><td>★★★★★</td></tr>
+<tr><td><strong>到货验收</strong></td><td>—</td><td>项目现场</td><td>甲方</td><td>★★★★</td></tr>
+<tr><td><strong>现场验收</strong></td><td>SAT（Site Acceptance Test）</td><td>项目现场</td><td>甲方 + 集成方 + 施工方</td><td>★★★★★</td></tr>
+</table>
+
+<p><strong>我的建议：FAT 一定要派人去现场看。</strong> 出差花两天时间，能避免后面两个月的扯皮。而且很多问题（比如管路内壁清洁度、焊口质量），一旦装到现场就再也看不到了。</p>
+
+<hr>
+
+<h2>二、出厂验收（FAT）：去工厂看什么</h2>
+
+<p>到了工厂，别光看展厅。直接进车间，看正在装配的那台。以下是完整的检查项。</p>
+
+<h3>1. 文件审查（先看纸，再看货）</h3>
+
+<table>
+<tr><th>文件</th><th>为什么要看</th></tr>
+<tr><td><strong>材质证明</strong>（不锈钢 316L/304 的材质单）</td><td>确认管路和 Manifold 材质，这是防腐蚀的基础</td></tr>
+<tr><td><strong>焊接记录 + 焊工资质</strong></td><td>不锈钢管路焊接需要合格焊工，自动氩弧焊优于手工焊</td></tr>
+<tr><td><strong>钝化/酸洗记录</strong></td><td>焊后不做钝化，焊渣和氧化层是堵塞源</td></tr>
+<tr><td><strong>压力测试报告</strong></td><td>必须有实际测试数据，不是"合格"两个字</td></tr>
+<tr><td><strong>清洁度检测报告</strong></td><td>颗粒度、白布擦拭结果、内窥镜检查照片</td></tr>
+<tr><td><strong>快接头合格证 + 寿命指标</strong></td><td>插拔次数、泄漏量、材质</td></tr>
+<tr><td><strong>冷板热性能测试报告</strong></td><td>热阻、流量-压降曲线</td></tr>
+<tr><td><strong>CDU 出厂测试报告</strong></td><td>泵、板换、控制、保护功能</td></tr>
+</table>
+
+<p><strong>如果厂家拿不出这些文件，只有一本彩页样本，那就别签验收单。</strong></p>
+
+<h3>2. 压力与保压测试（最重要的一项）</h3>
+
+<p>这是液冷系统最基础、也是最不能省的测试。</p>
+
+<p><strong>标准做法</strong>：</p>
+
+<ul><li>试验压力：<strong>1.5 倍设计工作压力</strong>（设计压力通常 4–6 bar，试验压力 6–9 bar）</li><li>保压时间：<strong>至少 30 分钟</strong>，重要项目要求 24 小时</li><li>判据：<strong>无可见渗漏 + 压降不超过规定值</strong>（通常 30 分钟内压降 ≤ 1%，或按项目规范）</li></ul>
+
+<p><strong>测试要注意</strong>：</p>
+
+<ul><li>要用液体做，不能用气体做（气体测试危险性高，且微小渗漏不易发现）</li><li>压力表要经过校准，精度不低于 1.6 级</li><li>要分段测试：柜内管路单独测、整机测、系统联起来再测</li></ul>
+
+<h3>3. 氦质谱检漏（高要求项目）</h3>
+
+<p>对于 GPU 集群、金融、政务这类对可靠性要求极高的项目，可以要求做氦检漏。</p>
+
+<ul><li>原理：充入氦气，用质谱仪检测外部氦浓度</li><li>判据：漏率一般要求 ≤ 1×10⁻⁶ Pa·m³/s 量级（具体按项目规范）</li><li>优点：能发现肉眼和保压测不出的微渗漏</li></ul>
+
+<p>成本会高一些，但对于几百万元的设备投资来说，这个钱花得值。</p>
+
+<h3>4. 清洁度检查</h3>
+
+<p><strong>这是我最看重的现场检查项</strong>，因为它直接决定冷板会不会堵。</p>
+
+<p>看什么：</p>
+
+<ul><li><strong>内窥镜检查</strong>：把内窥镜伸进管路，看焊口内壁有没有焊瘤、氧化皮、残留物</li><li><strong>白布擦拭</strong>：用干净白布擦拭管内壁，看有没有可见污染物</li><li><strong>冲洗记录</strong>：冲洗流速、时间、排出水浊度</li></ul>
+
+<p>一个判断标准：<strong>冲洗后的排出水，浊度和电导率要接近注入水。</strong> 如果排出来的水是黄的、浑的，说明内壁处理不合格。</p>
+
+<h3>5. 漏液检测系统功能测试</h3>
+
+<p>不要只相信"我们装了传感器"。<strong>要现场模拟漏液，看系统反应。</strong></p>
+
+<p>测试方法：</p>
+
+<ul><li>用少量水（或冷却液）滴在检测绳/传感器的指定位置</li><li>记录：<strong>告警响应时间</strong>（应 ≤ 10 秒）、<strong>定位准确性</strong>（能不能准确报出是哪一段）、<strong>联动动作</strong>（有没有触发声光报警、有没有推送到 DCIM、有没有执行预设的关阀/停机逻辑）</li></ul>
+
+<p><strong>我见过太多"装了但没接"的案例</strong>——传感器装了，线没接到监控主机，或者地址点表配置错了，告警根本传不出来。这个测试必须做。</p>
+
+<h3>6. 冷板热性能验证</h3>
+
+<ul><li>在设计流量下测冷板热阻（单位 ℃/W）</li><li>测流量-压降曲线，验证泵选型是否匹配</li><li>如果条件允许，做<strong>实际服务器满载测试</strong>，记录 GPU/CPU 结温</li></ul>
+
+<p><strong>关键判据</strong>：满载工况下，芯片结温要有足够余量（一般距降频阈值至少 10–15℃）。</p>
+
+<h3>7. 结构与承重</h3>
+
+<ul><li>托盘满载变形测试报告（额定载荷下 72 小时，永久变形 ≤ 1–2mm）</li><li>柜体水平度、垂直度</li><li>门板开合、密封条</li><li>接地连续性测试（柜体、门板、管路之间的电阻 ≤ 0.1Ω）</li></ul>
+
+<h3>8. FAT 验收清单（可打印版）</h3>
+
+<pre><code>□ 材质证明文件齐全（316L/304 材质单）
+□ 焊接记录与焊工资质
+□ 钝化/酸洗记录
+□ 清洁度检测报告（含内窥镜照片）
+□ 压力测试报告（1.5 倍压力，保压 ≥30min，压降合格）
+□ 氦检漏报告（如要求）
+□ 快接头合格证与寿命指标
+□ 冷板热性能测试报告
+□ CDU 出厂测试报告
+□ 漏液检测模拟测试（响应时间 ≤10s，定位准确，联动正常）
+□ 接地连续性测试（≤0.1Ω）
+□ 托盘承重测试报告
+□ 外观检查（无变形、无划伤、涂层完好）
+□ 随机备件与文件清单
+□ 操作维护手册（中文版）</code></pre>
+
+<hr>
+
+<h2>三、到货验收：路上出的问题，别到现场才发现</h2>
+
+<p>货到现场，卸车之前先做这几件事：</p>
+
+<p><strong>1. 先看压力表</strong><br>
+液冷柜出厂时如果是保压状态（部分厂家充氮 0.5–1 bar），<strong>到货第一件事是看压力表读数</strong>。如果压力归零，说明运输途中密封出了问题，这台柜要重点检查，不能直接签收。</p>
+
+<p><strong>2. 检查运输损伤</strong></p>
+
+<ul><li>外包装是否破损、受潮</li><li>柜体是否有变形、磕碰、涂层脱落</li><li>快接头保护帽是否还在（丢了就是进灰了）</li></ul>
+
+<p><strong>3. 核对铭牌与文件</strong><br>
+型号、数量、序列号，随机文件（合格证、测试报告、操作手册、备件清单）。</p>
+
+<p><strong>4. 确认管路状态</strong></p>
+
+<ul><li>是否排空干燥</li><li>有没有残留液体痕迹</li><li>管口是否封堵完好</li></ul>
+
+<p><strong>5. 拍照留证</strong><br>
+卸车前后各拍一组照片，特别是包装状态和压力表读数。<strong>这是后期索赔的依据。</strong></p>
+
+<hr>
+
+<h2>四、现场安装验收：注液是分水岭</h2>
+
+<p>这一段是整个交付过程技术含量最高的部分，也是最容易留隐患的部分。</p>
+
+<h3>安装与调试的标准流程</h3>
+
+<pre><code>① 机柜就位 → 调平 → 固定 → 接地
+② 二次侧管路接驳（主管 → 柜内 Manifold）
+③ 系统冲洗（Flush）
+④ 保压检漏
+⑤ 真空注液
+⑥ 循环排气
+⑦ 流量平衡标定
+⑧ CDU 单机与联调
+⑨ 漏液检测与监控系统联调
+⑩ 空载运行测试（≥4 小时）
+⑪ 带载烤机测试（≥24 小时，重要项目 72 小时）
+⑫ 验收签字 + 培训 + 文档交付</code></pre>
+
+<h3>每一步的验收判据</h3>
+
+<p><strong>① 就位与接地</strong></p>
+
+<ul><li>水平度：柜体垂直度偏差 ≤ 3mm（用水平尺和吊线）</li><li>固定：抗震地脚/膨胀螺栓紧固，扭矩达标</li><li>接地：柜体、门板、管路等电位连接，接地电阻 ≤ 1Ω（按机房接地系统要求）</li></ul>
+
+<p><strong>② 管路接驳</strong></p>
+
+<ul><li>法兰/卡箍连接力矩达标（按规范，不锈钢卡箍一般 5–8 N·m，具体看规格）</li><li>管路支撑间距 500–800mm</li><li>软管弯曲半径 ≥ 管径的 5–8 倍</li><li>湿区与干区隔离</li></ul>
+
+<p><strong>③ 系统冲洗</strong><br>
+这是<strong>最容易被跳过</strong>的一步。新装管路里可能有焊渣、灰尘、安装残留，必须冲干净再注冷却液。</p>
+
+<ul><li>冲洗介质：去离子水或专用冲洗液</li><li>冲洗流速：≥ 系统正常运行流速的 1.5 倍（湍流状态才能带走颗粒）</li><li>判据：排出水浊度、颗粒度接近注入水，过滤器无明显截留物</li><li>冲洗后要<strong>彻底排空并吹干</strong>，不能让冲洗水稀释冷却液</li></ul>
+
+<p><strong>④ 保压检漏</strong></p>
+
+<ul><li>同 FAT 标准（1.5 倍压力，保压 ≥30 分钟）</li><li>这次测的是<strong>整个系统</strong>（含现场安装的管路），比 FAT 范围更大</li><li>所有接头、焊缝、阀门都要逐一目视检查</li></ul>
+
+<p><strong>⑤ 真空注液</strong><br>
+<strong>这一步是整个液冷系统成败的关键。</strong></p>
+
+<p>为什么必须真空注液？冷板内部是微通道结构，流道窄、走向复杂。如果直接重力灌或者泵灌，管路和冷板里会残留大量气泡。这些气泡会：</p>
+
+<ul><li>形成气堵，局部无流量 → 局部过热</li><li>导致泵气蚀，损坏叶轮</li><li>让流量表读数虚高，掩盖真实问题</li></ul>
+
+<p><strong>真空注液的做法</strong>：</p>
+
+<ul><li>用真空泵把系统抽到一定真空度（通常 -0.08 到 -0.095 MPa）</li><li>保持真空一段时间，确认系统密封性（真空度不回升）</li><li>利用负压把冷却液吸入系统</li><li>注液量要达到设计充注量的 95% 以上</li></ul>
+
+<p><strong>验收判据</strong>：真空度达标、注液量达标、系统无可见气泡。</p>
+
+<p><strong>⑥ 循环排气</strong><br>
+注液之后还要循环排气：</p>
+
+<ul><li>开启 CDU 泵，低流量循环</li><li>打开各高点的排气阀</li><li>逐步提高流量，反复排气</li><li>直到流量计读数稳定、无压力波动、无气蚀噪音</li></ul>
+
+<p><strong>这一步可能要几个小时甚至一整天，不能急。</strong> 排气不彻底，后面全是麻烦。</p>
+
+<p><strong>⑦ 流量平衡标定</strong><br>
+每个支路（每台柜、每台服务器）的流量要达到设计值。</p>
+
+<ul><li>用便携式流量计或者支路上的流量计测量</li><li>调节平衡阀，使各支路流量偏差 ≤ ±10%</li><li>记录最终阀门开度和流量值，<strong>这个数据要存档</strong></li></ul>
+
+<p>为什么重要？流量分配不均，流量小的那台会过热，而总流量表看起来是正常的。<strong>这是液冷系统最典型的"看不见的故障"。</strong></p>
+
+<p><strong>⑧ CDU 联调</strong></p>
+
+<ul><li>供液温度设定（按露点 + 5℃ 原则）</li><li>露点跟随功能测试（模拟机房湿度变化，看供液温度是否自动调整）</li><li>泵切换测试（主泵故障，备用泵自动投入，切换时间 ≤ 10 秒）</li><li>保护功能测试（低流量、低液位、超温、超压保护）</li><li>通讯接口测试（Modbus/BACnet/SNMP 接入 DCIM）</li></ul>
+
+<p><strong>⑨ 监控联调</strong></p>
+
+<ul><li>漏液告警 → DCIM → 声光 → 短信/微信推送，全链路测试</li><li>温度、压力、流量、液位点位核对（<strong>逐点核对，不要相信批量导入</strong>）</li><li>告警阈值设定</li></ul>
+
+<p><strong>⑩⑪ 烤机测试</strong></p>
+
+<ul><li>空载运行 ≥ 4 小时：检查泵、阀门、控制系统、无渗漏</li><li><strong>满载烤机 ≥ 24 小时（重要项目 72 小时）</strong>：</li><li>全程记录：各测温点温度、流量、压力、泵电流、液位、机房温湿度</li><li>判据：温度稳定、流量稳定、无告警、服务器无降频</li><li><strong>特别注意</strong>：观察 CDU 的补液量。如果烤机期间需要补液，说明有微渗，必须查明</li></ul>
+
+<hr>
+
+<h2>五、运维 SOP：把巡检做成一张表</h2>
+
+<p>系统交付之后，就进入运维阶段。我给客户设计的巡检表，按频次分层。</p>
+
+<h3>日常巡检（每班/每日）</h3>
+
+<table>
+<tr><th>检查项</th><th>判据</th><th>记录</th></tr>
+<tr><td>CDU 供液温度</td><td>在设定值 ±1℃</td><td>✓</td></tr>
+<tr><td>CDU 回液温度</td><td>供回温差在设计范围（通常 8–12K）</td><td>✓</td></tr>
+<tr><td>系统流量</td><td>在设计值 ±10%</td><td>✓</td></tr>
+<tr><td>系统压力</td><td>稳定，无持续下降</td><td>✓</td></tr>
+<tr><td>CDU 液位</td><td>正常，无下降趋势</td><td>✓</td></tr>
+<tr><td>泵运行状态</td><td>无异响、无异常振动、电流正常</td><td>✓</td></tr>
+<tr><td>机房温湿度</td><td>温度 18–27℃，湿度 40%–60%</td><td>✓</td></tr>
+<tr><td>告警检查</td><td>无未处理告警</td><td>✓</td></tr>
+<tr><td>接水盘/地面目视</td><td>干燥、无积液</td><td>✓</td></tr>
+</table>
+
+<p><strong>日常巡检的核心：看趋势，不看单点。</strong> 比如液位，今天比昨天低一点，明天又低一点，这就是信号——即使还在"正常范围"内。</p>
+
+<h3>每周巡检</h3>
+
+<ul><li>过滤器压差（记录数值，与上周对比）</li><li>管路接头目视检查（有无渗液痕迹、锈蚀）</li><li>漏液检测绳状态（有无破损、移位）</li><li>备用泵切换测试（每月做一次即可，但每周确认处于自动状态）</li></ul>
+
+<h3>每月巡检</h3>
+
+<ul><li>水质检测（快速项）：<strong>电导率、pH</strong></li><li>CDU 板换温差（一次侧与二次侧的换热温差，判断结垢/污堵）</li><li>泵电流趋势</li><li>冷却液补充记录（补充量异常要分析）</li><li>阀门标识与状态核对</li><li>DCIM 历史数据回顾（温度曲线、告警统计）</li></ul>
+
+<h3>每季度巡检</h3>
+
+<ul><li><strong>完整水质检测</strong>：电导率、pH、浊度、氯离子、金属离子（Cu/Fe/Al）、微生物</li><li>紧固件力矩抽查（管路支架、接头）</li><li>电气连接点测温（红外测温仪，异常温升是隐患）</li><li>接地系统检查</li><li>软管老化检查（有无龟裂、鼓包、硬化）</li><li>快接头外观检查（有无渗漏痕迹、密封圈老化）</li></ul>
+
+<h3>每半年</h3>
+
+<ul><li>冷却液<strong>浓度/冰点检测</strong>（冬夏各一次，入冬前必做）</li><li>缓蚀剂残余浓度检测（送实验室）</li><li>微生物培养检测</li><li>管路内窥镜抽查（重点看焊口和弯头处）</li><li>CDU 板换清洗评估（根据温差和压差判断）</li><li>应急预案演练（<strong>这个非常重要，见第七节</strong>）</li></ul>
+
+<h3>每年</h3>
+
+<ul><li>系统全面检查（按 FAT 项目抽测，重点是保压测试）</li><li>冷却液全分析</li><li>板换拆洗</li><li>所有阀门操作测试（防止长期不动卡死）</li><li>备件盘点与补充</li><li>运维记录归档与年度评估</li></ul>
+
+<h3>一个原则：所有检测都要留档</h3>
+
+<p>建一张 Excel 或者用 DCIM 的历史库，把所有检测数据按时间存下来。这份档案的价值在于：</p>
+
+<ul><li><strong>趋势预警</strong>：在问题爆发前 3–6 个月就能看到苗头</li><li><strong>责任界定</strong>：出问题时的证据</li><li><strong>优化依据</strong>：什么时候该换液、什么时候该清洗，用数据说话，不拍脑袋</li></ul>
+
+<hr>
+
+<h2>六、故障处置：按现象倒推，别乱猜</h2>
+
+<p>液冷系统出故障，值班人员最常犯的错误是"凭感觉处置"。我整理了一张故障树，按现象倒推。</p>
+
+<h3>故障 1：某台服务器/GPU 过热、降频</h3>
+
+<p><strong>排查顺序</strong>：</p>
+
+<ol><li>看这台服务器的<strong>支路流量</strong>是否达标（最常见原因：流量不足）</li><li>看冷板进出口温差（温差过小 = 流量过大或换热差；温差过大 = 流量不足）</li><li>检查冷板与芯片的贴合（导热界面材料是否干涸、有无气泡）</li><li>检查流道是否堵塞（冷板进出口压差）</li><li>检查是否有气堵（局部高点积气）</li></ol>
+
+<p><strong>处理</strong>：调节平衡阀 → 排气 → 如确认堵塞，隔离该支路，冲洗或更换冷板。</p>
+
+<h3>故障 2：CDU 补液频繁</h3>
+
+<p><strong>这意味着有渗漏。</strong> 排查顺序：</p>
+
+<ol><li>看接水盘有没有积液（有 = 明漏）</li><li>检查所有快接头、阀门、法兰（目视 + 纸巾擦拭）</li><li>检查排气阀（有时自动排气阀会带出液体）</li><li>检查板换是否内漏（一次侧液体进入二次侧，或反之）—— 取样检测</li></ol>
+
+<p><strong>不要靠"补液就行"来维持。</strong> 渗漏会持续扩大，而且冷却液泄漏到电气区域是重大风险。</p>
+
+<h3>故障 3：系统流量持续下降</h3>
+
+<p><strong>排查顺序</strong>：</p>
+
+<ol><li>过滤器压差（最常见：堵塞）</li><li>泵的入口压力（是否气蚀）</li><li>阀门是否被误关或部分关闭</li><li>管路是否有堵塞（内窥镜或分段测压）</li><li>泵叶轮是否磨损</li></ol>
+
+<h3>故障 4：电导率持续升高</h3>
+
+<p><strong>排查顺序</strong>：</p>
+
+<ol><li>最近是否补过液？补的是什么？（最常见：补了自来水或不同品牌冷却液）</li><li>系统是否有持续的活性腐蚀（结合金属离子判断）</li><li>是否混入其他液体（如一次侧水通过板换内漏进入）</li></ol>
+
+<p><strong>处置</strong>：如果超标不严重，可以部分置换；严重则整系统换液 + 查找腐蚀源。</p>
+
+<h3>故障 5：pH 持续下降</h3>
+
+<p><strong>原因</strong>：乙二醇/丙二醇降解产酸，或缓蚀剂耗尽。</p>
+
+<p><strong>处置</strong>：先加 pH 调整剂应急，然后评估是否需要换液。<strong>pH 低于 7.5 且调整无效，必须换液。</strong></p>
+
+<h3>故障 6：泵异响、振动</h3>
+
+<p><strong>排查顺序</strong>：</p>
+
+<ol><li>入口压力是否足够（气蚀的典型表现是"噼啪"声，像石子在管里流）</li><li>系统是否有气（排气）</li><li>泵基础/减震是否松动</li><li>轴承是否磨损</li></ol>
+
+<h3>故障 7：漏液告警触发</h3>
+
+<p><strong>先别慌，先判定是真漏还是误报</strong>（见第七节）。</p>
+
+<h3>故障 8：柜内出现凝露</h3>
+
+<p><strong>排查顺序</strong>：</p>
+
+<ol><li>供液温度是否低于机房露点（最常见）</li><li>CDU 的露点跟随功能是否正常工作</li><li>机房湿度是否异常升高（加湿系统失控、门窗未关）</li><li>柜内温湿度传感器是否故障</li></ol>
+
+<p><strong>处置</strong>：立即提高供液温度至露点 + 5℃ 以上，检查湿度控制，擦干积液，检查设备绝缘。</p>
+
+<hr>
+
+<h2>七、漏液应急处置：三步决策法</h2>
+
+<p>这是我认为每个液冷机房都必须演练的流程。</p>
+
+<h3>第一步：确认是真漏还是误报</h3>
+
+<p>液冷系统的"漏液告警"有三种可能：<strong>真漏、凝露、传感器误报</strong>。三者处置方式完全不同，判断错了后果很严重。</p>
+
+<p><strong>判断依据（按顺序看）</strong>：</p>
+
+<ol><li><strong>CDU 液位与补液速率</strong>：液位持续下降 + 补液速率异常 = 真漏</li><li><strong>接水盘液位</strong>：有积液 = 真漏（或凝露量大）</li><li><strong>目视检查</strong>：现场看管路、接头、阀门。戴手电，看柜体底部、Manifold 下方</li><li><strong>检测绳定位</strong>：告警的具体位置</li><li><strong>柜内湿度趋势</strong>：湿度飙升但液位正常 = 大概率凝露</li><li><strong>传感器自检</strong>：排除误报（接线松动、进水、干扰）</li></ol>
+
+<p><strong>判断时间要控制在 5 分钟内。</strong> 所以监控系统的点位要多、定位要准，这就是为什么我一直强调检测手段要冗余。</p>
+
+<h3>第二步：定位与隔离</h3>
+
+<p>确认真漏之后：</p>
+
+<ol><li><strong>确定泄漏点在哪一路</strong>（哪台柜、哪条支路）</li><li><strong>关闭对应支路的隔离阀</strong>（这就是为什么要装分段隔离阀）</li><li><strong>判断是否需要切断该支路服务的负载</strong></li></ol>
+
+<p><strong>断电决策原则</strong>——这是最关键也最难的判断：</p>
+
+<table>
+<tr><th>情况</th><th>决策</th></tr>
+<tr><td>液体已接触带电部位（服务器、PDU、母线）</td><td><strong>立即断电</strong>，安全优先</td></tr>
+<tr><td>液体在接水盘内，未接触任何带电部件</td><td>可维持运行，<strong>持续监视 + 准备断电</strong></td></tr>
+<tr><td>泄漏点明确且已隔离，柜内干燥</td><td>可维持运行，密切监视</td></tr>
+<tr><td>泄漏量大、无法定位、持续扩大</td><td><strong>立即断电 + 关阀</strong></td></tr>
+</table>
+
+<p><strong>不要一有告警就全系统断电，也不要心存侥幸硬扛。</strong> 判据就是：液体有没有接触带电部位。</p>
+
+<h3>第三步：处置与恢复</h3>
+
+<ol><li>关阀隔离、必要时断电</li><li>收集液体（接水盘、吸水材料）</li><li>擦干、吹干受影响区域</li><li><strong>绝缘检测</strong>：受影响的电气部件必须做绝缘测试，合格后才能上电</li><li>检查泄漏点：接头？密封圈？焊缝？软管？</li><li>更换损坏部件</li><li>局部或整体重新保压测试</li><li>补液、排气</li><li>恢复运行，观察至少 4 小时</li></ol>
+
+<h3>演练要求</h3>
+
+<p><strong>每半年至少演练一次。</strong> 演练内容：</p>
+
+<ul><li>漏液告警的识别与判定（5 分钟内）</li><li>阀门操作（每个人都要知道关哪个阀）</li><li>断电决策流程（谁有权决定）</li><li>应急物资位置（吸水材料、备件、工具）</li><li>上报流程与联系人</li></ul>
+
+<p>没有演练过的预案，等于没有预案。</p>
+
+<hr>
+
+<h2>八、备件清单：花小钱防大事</h2>
+
+<p>我给客户的常备备件建议（按一个 6–10 柜的中型液冷系统）：</p>
+
+<table>
+<tr><th>备件</th><th>建议数量</th><th>说明</th></tr>
+<tr><td>CDU 泵（整机或泵头）</td><td>1 台</td><td>或者确认厂家的备件供应时效</td></tr>
+<tr><td>过滤器滤芯</td><td>1 套（2–3 个）</td><td>按更换周期备</td></tr>
+<tr><td>快接头（公头 + 母头）</td><td>各 3–5 套</td><td>易损，且有插拔寿命</td></tr>
+<tr><td>密封圈 / O 型圈</td><td>一批</td><td>各种规格，便宜但关键</td></tr>
+<tr><td>漏液检测绳</td><td>1–2 条</td><td>备用长度按最长回路</td></tr>
+<tr><td>温度传感器</td><td>2–3 个</td><td></td></tr>
+<tr><td>压力/流量传感器</td><td>各 1 个</td><td></td></tr>
+<tr><td>软管</td><td>2–3 根</td><td>按常用规格</td></tr>
+<tr><td>阀门（隔离阀）</td><td>1–2 个</td><td></td></tr>
+<tr><td><strong>冷却液</strong></td><td>年补充量 × 1.5</td><td><strong>必须备，且型号一致</strong></td></tr>
+<tr><td>吸水材料、绝缘检测工具</td><td>1 套</td><td>应急物资</td></tr>
+</table>
+
+<p><strong>备件投资建议</strong>：按系统总投资的 <strong>2%–3%</strong> 备常备件，另外和厂家约定紧急备件的响应时效（比如 24 小时到场）。</p>
+
+<p><strong>冷却液备货特别提醒</strong>：型号必须与在用的一致。不同品牌、不同配方不能混用（见《液冷机柜里的"血"：冷却液怎么选》）。如果厂家停产或改配方，要提前做相容性评估。</p>
+
+<hr>
+
+<h2>九、文档体系：一个液冷系统该有哪些文件</h2>
+
+<table>
+<tr><th>文件</th><th>用途</th><th>交付时机</th></tr>
+<tr><td>P&amp;ID 管路仪表图</td><td>系统原理、阀门编号</td><td>设计阶段</td></tr>
+<tr><td>管路轴测图 / 安装图</td><td>施工与检修</td><td>施工阶段</td></tr>
+<tr><td>阀门编号表 + 现场标识</td><td>应急操作</td><td>竣工</td></tr>
+<tr><td>设备台账（含序列号、质保期）</td><td>资产管理</td><td>竣工</td></tr>
+<tr><td>操作维护手册（中文）</td><td>日常运维</td><td>竣工</td></tr>
+<tr><td>应急预案</td><td>事故处置</td><td>竣工</td></tr>
+<tr><td>培训记录</td><td>责任界定</td><td>培训后</td></tr>
+<tr><td>水质检测记录</td><td>趋势分析 + 责任界定</td><td>持续</td></tr>
+<tr><td>维护记录</td><td>设备档案</td><td>持续</td></tr>
+<tr><td>变更记录</td><td>任何改动都要记录</td><td>持续</td></tr>
+</table>
+
+<p><strong>变更记录这一条特别重要。</strong> 换了个阀门、加了段管子、改了冷却液品牌——这些都要记。很多事故追溯到最后，都是"上次改了什么没人知道"。</p>
+
+<hr>
+
+<h2>十、写在最后：运维是买不来的</h2>
+
+<p>液冷系统的运维能力，不是买设备送的，也不是看手册就能会的。它需要：</p>
+
+<ul><li>一套清晰的 SOP</li><li>一份完整的文档</li><li>一批受过培训的人</li><li>定期的演练和复盘</li></ul>
+
+<p>我在做交付的时候，培训和文档这两项，跟设备本身一样重视。因为我知道，一台液冷柜的价值不在交付那天体现，而在三年后、五年后它还能稳定跑着的时候体现。</p>
+
+<p>我们做<a href="https://www.zltdata.com/products/liquid-cooling-cabinet.html">液冷温控机柜</a>，交付的除了柜子，还包括 FAT 全套测试报告、操作维护手册、以及现场培训。这套东西是我们做了这么多年攒下来的，愿意给客户讲透——因为运维做好了，设备才不会被冤枉。</p>
+
+<p>如果你的液冷系统已经在跑，但没做过完整的验收和 SOP，建议尽快补上。这比买任何保险都划算。</p>
+
+<hr>
+
+<div class="related-box"><h3>相关阅读</h3>
+
+<ul><li><a href="https://www.zltdata.com/blog/liquid-cooling-coolant-selection.html">液冷机柜里的"血"：冷却液怎么选？</a></li><li><a href="https://www.zltdata.com/blog/liquid-cooling-cabinet-structure-design.html">液冷机柜的柜体，和风冷柜根本不是一回事</a></li><li><a href="https://www.zltdata.com/blog/liquid-cooling-retrofit-roadmap.html">风液混布：老机房不停机上液冷的分步改造路线图</a></li><li><a href="https://www.zltdata.com/blog/what-is-cdu-in-liquid-cooling.html">什么是液冷机柜里的 CDU？没有它，液冷就是一堆管子</a></li><li><a href="https://www.zltdata.com/blog/liquid-cooling-10-truths.html">液冷机柜的 10 个真相：你以为的液冷，可能根本不是液冷</a></li></ul></div>
+
+<div class="related-box"><h3>相关产品</h3>
+
+<ul><li><a href="https://www.zltdata.com/products/liquid-cooling-cabinet.html">液冷温控机柜</a> —— 全套 FAT 测试报告 + 现场培训</li><li><a href="https://www.zltdata.com/products/dcim.html">机房动环监控系统 DCIM</a> —— 漏液、温度、流量、电力全参数监测与历史趋势</li><li><a href="https://www.zltdata.com/products/pdu.html">PDU 机柜电源分配单元</a> —— 支路级电力监测</li><li><a href="https://www.zltdata.com/products/power-dist-cabinet.html">数据中心配电柜（列头柜）</a> —— 谐波分析与电力品质监测</li><li><a href="https://www.zltdata.com/products/precision-ac.html">精密空调</a> —— 液冷系统的风冷备份</li><li><a href="https://www.zltdata.com/products/ups-power.html">模块化 UPS</a> —— N+X 冗余供电</li></ul></div>
+
+<blockquote>作者：高林，河北泽雷特电子科技创始人，数据中心基础设施行业从业 20 年。<br>
+联系：18603311919 | www.zltdata.com</blockquote>
+
+<div class="cta-box">
+<p style="font-size:16px;margin-bottom:10px"><strong>🤝 拿不准你的机房适不适合上液冷？</strong></p>
+<p style="font-size:14px;opacity:.9;margin-bottom:0">私信我或直接打电话，<strong>免费上门做热密度评估</strong>，帮你判断液冷是否适合你的场景，以及用什么方案最划算——不管最后要不要做，评估本身不花钱。</p>
+<p style="font-size:13px;opacity:.75;margin-top:10px">📞 18603311919 | 📧 gl@zltdata.com | 🌐 <a href="https://www.zltdata.com" style="color:#27C3C4">www.zltdata.com</a></p>
+</div>
+
+<div class="author-box">
+  <div class="name">河北泽雷特-老高</div>
+  <p>做机柜20年了。自有工厂在河北，服务器机柜、智能一体柜、微模块数据中心，厂家直发，没有中间商。同时也做数据中心产品销售+机房运维，河北上千家企业的选择。机房有散热、扩容、运维方面的困惑？私信我，免费上门帮你看。</p>
+  <div class="contact">📞 18603311919 | 📧 gl@zltdata.com | 🌐 www.zltdata.com | 📖 zltdata.com/blog/</div>
+</div>
+</article>
+
+<footer>
+© 2026 河北泽雷特电子科技有限公司 | <a href="https://beian.miit.gov.cn/">冀ICP备18036691号-4</a> | 本站文章可自由引用，请保留出处和作者信息
+</footer>
+
+</body>
+</html>

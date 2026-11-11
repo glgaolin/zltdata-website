@@ -1,0 +1,210 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>泽雷特 · 工单管理</title>
+<style>
+  :root {
+    --blue: #0D47A1; --cyan: #27C3C4; --dark: #142824;
+    --bg: #F4F6F8; --surface: #FFFFFF; --fg: #1A1A2E;
+    --muted: #6B7280; --border: #E5E7EB;
+    --danger: #E53935; --warning: #FB8C00; --success: #43A047; --info: #1E88E5;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    background: var(--bg); color: var(--fg);
+    max-width: 430px; margin: 0 auto; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .status-bar { display: flex; justify-content: space-between; padding: 14px 24px 8px; font-size: 12px; font-weight: 600; background: var(--blue); color: #fff; }
+  .nav-bar { display: flex; align-items: center; gap: 12px; padding: 12px 24px 16px; background: var(--blue); color: #fff; border-radius: 0 0 20px 20px; }
+  .nav-bar .back { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.15); border: none; color: #fff; font-size: 18px; display: grid; place-items: center; cursor: pointer; }
+  .nav-bar h1 { font-size: 18px; font-weight: 700; }
+  /* Segment Control */
+  .segments { display: flex; gap: 0; padding: 16px 24px; }
+  .seg-btn { flex: 1; padding: 8px; text-align: center; font-size: 13px; font-weight: 600; border: 1.5px solid var(--border); background: var(--surface); cursor: pointer; }
+  .seg-btn:first-child { border-radius: 8px 0 0 8px; }
+  .seg-btn:last-child { border-radius: 0 8px 8px 0; }
+  .seg-btn + .seg-btn { border-left: none; }
+  .seg-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  /* Ticket Cards */
+  .ticket-list { padding: 0 24px 20px; }
+  .ticket-card { background: var(--surface); border-radius: var(--radius); padding: 16px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .ticket-card .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .ticket-card .id { font-family: ui-monospace, SF Mono, monospace; font-size: 12px; color: var(--muted); }
+  .ticket-card .priority { padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+  .priority.high { background: #FFEBEE; color: var(--danger); }
+  .priority.mid { background: #FFF3E0; color: var(--warning); }
+  .priority.low { background: #E3F2FD; color: var(--info); }
+  .ticket-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .ticket-card .desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+  .ticket-card .meta-row { display: flex; gap: 16px; font-size: 11px; color: var(--muted); margin-bottom: 10px; flex-wrap: wrap; }
+  .ticket-card .meta-row span { display: flex; align-items: center; gap: 3px; }
+  /* Progress bar inside ticket */
+  .mini-progress { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 10px; overflow: hidden; }
+  .mini-progress .fill { height: 100%; border-radius: 2px; }
+  .mini-progress .fill.blue { background: var(--blue); }
+  .mini-progress .fill.green { background: var(--success); }
+  .ticket-card .actions { display: flex; gap: 8px; }
+  .ticket-card .actions button { flex: 1; padding: 8px; border-radius: var(--radius-sm); border: none; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--border) !important; color: var(--fg); }
+  /* New Ticket Form (Modal-like) */
+  .form-section { padding: 20px 24px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    font-size: 14px; font-family: inherit; background: var(--surface); color: var(--fg);
+  }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .submit-btn { width: 100%; padding: 14px; background: var(--cyan); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; cursor: pointer; }
+  /* Tab Bar */
+  .tab-bar { position: sticky; bottom: 0; display: flex; justify-content: space-around; background: var(--surface); border-top: 1px solid var(--border); padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0)); max-width: 430px; margin: 0 auto; }
+  .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; color: var(--muted); border: none; background: none; cursor: pointer; padding: 4px 12px; }
+  .tab-item.active { color: var(--blue); }
+  .tab-icon { font-size: 22px; }
+</style>
+</head>
+<body>
+  <div class="status-bar"><span>9:41</span><span style="display:flex;gap:6px">●●●●○</span></div>
+  <div class="nav-bar">
+    <button class="back" onclick="history.back()">←</button>
+    <h1>工单管理</h1>
+    <span style="margin-left:auto;font-size:20px;cursor:pointer" id="toggleNew">＋</span>
+  </div>
+
+  <!-- Segment Control -->
+  <div class="segments">
+    <button class="seg-btn active" onclick="switchTab(this,'ongoing')">进行中</button>
+    <button class="seg-btn" onclick="switchTab(this,'pending')">待处理</button>
+    <button class="seg-btn" onclick="switchTab(this,'done')">已完成</button>
+  </div>
+
+  <!-- Ongoing Tickets -->
+  <div class="ticket-list" id="ongoing">
+    <div class="ticket-card">
+      <div class="top">
+        <span class="id">WO-2026-0812</span>
+        <span class="priority high">紧急</span>
+      </div>
+      <h3>A3机柜温度过高处理</h3>
+      <div class="desc">A3-12号机柜温度持续超过38°C，需要检查送风通道并调整空调参数。</div>
+      <div class="meta-row">
+        <span>👤 张建国</span><span>📅 2026-08-05</span><span>⏱️ 处理中</span>
+      </div>
+      <div class="mini-progress"><div class="fill blue" style="width:60%"></div></div>
+      <div class="actions">
+        <button class="btn-primary">更新进度</button>
+        <button class="btn-outline">转派</button>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="top">
+        <span class="id">WO-2026-0809</span>
+        <span class="priority mid">普通</span>
+      </div>
+      <h3>C区湿度传感器更换</h3>
+      <div class="desc">C区-03位湿度传感器数据持续偏高，需要更换传感器模块。</div>
+      <div class="meta-row">
+        <span>👤 李明辉</span><span>📅 2026-08-04</span><span>⏱️ 等待备件</span>
+      </div>
+      <div class="mini-progress"><div class="fill blue" style="width:40%"></div></div>
+      <div class="actions">
+        <button class="btn-primary">更新进度</button>
+        <button class="btn-outline">催促</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pending Tickets (hidden by default) -->
+  <div class="ticket-list" id="pending" style="display:none">
+    <div class="ticket-card">
+      <div class="top">
+        <span class="id">WO-2026-0815</span>
+        <span class="priority mid">普通</span>
+      </div>
+      <h3>D区新增机柜布线申请</h3>
+      <div class="desc">D区新到货10台服务器机柜，需要布线接入电力与网络。</div>
+      <div class="meta-row">
+        <span>👤 待指派</span><span>📅 2026-08-06</span><span>⏱️ 待受理</span>
+      </div>
+      <div class="actions">
+        <button class="btn-primary">接单</button>
+        <button class="btn-outline">退回</button>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="top">
+        <span class="id">WO-2026-0816</span>
+        <span class="priority high">紧急</span>
+      </div>
+      <h3>B区精密空调紧急维修</h3>
+      <div class="desc">2号精密空调（Liebert PEX4）停机，B区温度上升中，需要紧急维修。</div>
+      <div class="meta-row">
+        <span>👤 待指派</span><span>📅 2026-08-05</span><span>⏱️ 待受理</span>
+      </div>
+      <div class="actions">
+        <button class="btn-primary" style="background:var(--danger)">紧急接单</button>
+        <button class="btn-outline">转派专家</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Completed Tickets (hidden by default) -->
+  <div class="ticket-list" id="done" style="display:none">
+    <div class="ticket-card">
+      <div class="top">
+        <span class="id">WO-2026-0801</span>
+        <span class="priority low">低</span>
+      </div>
+      <h3>A区机柜编号标签更换</h3>
+      <div class="desc">A区12台机柜编号标签磨损，全部更换完成。</div>
+      <div class="meta-row">
+        <span>👤 王伟</span><span>📅 2026-08-02</span><span style="color:var(--success)">✅ 已完成</span>
+      </div>
+    </div>
+    <div class="ticket-card">
+      <div class="top">
+        <span class="id">WO-2026-0728</span>
+        <span class="priority mid">普通</span>
+      </div>
+      <h3>UPS电池组季度维护</h3>
+      <div class="desc">1-4号UPS电池组季度放电测试、连接检查、参数校准完成。</div>
+      <div class="meta-row">
+        <span>👤 李明辉</span><span>📅 2026-07-30</span><span style="color:var(--success)">✅ 已完成</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-item" onclick="location.href='screens_ios-dashboard.html'"><span class="tab-icon">🏠</span> 首页</button>
+    <button class="tab-item" onclick="location.href='screens_ios-alarms.html'"><span class="tab-icon">🔔</span> 告警</button>
+    <button class="tab-item active" onclick="location.href='screens_ios-tickets.html'"><span class="tab-icon">📋</span> 工单</button>
+    <button class="tab-item" onclick="location.href='screens_ios-products.html'"><span class="tab-icon">📦</span> 产品</button>
+    <button class="tab-item" onclick="location.href='screens_ios-profile.html'"><span class="tab-icon">👤</span> 我的</button>
+  </nav>
+
+  <script>
+    function switchTab(btn, tabId) {
+      btn.parentElement.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#ongoing,#pending,#done').forEach(d => d.style.display = 'none');
+      document.getElementById(tabId).style.display = '';
+    }
+    // Toggle new ticket form
+    let showForm = false;
+    document.getElementById('toggleNew').addEventListener('click', function() {
+      showForm = !showForm;
+      // Simple inline: would navigate to a new ticket form screen
+      alert('新建工单\n\n请在以下界面填写工单信息：\n1. 工单标题\n2. 问题描述\n3. 优先级（紧急/普通/低）\n4. 指派工程师\n5. 关联设备编号\n\n提交后将自动通知相关负责人。');
+    });
+  </script>
+</body>
+</html>

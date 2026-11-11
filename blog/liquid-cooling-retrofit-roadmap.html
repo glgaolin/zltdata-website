@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<title>老机房不停机上液冷：风液混布改造路线图与分期投资测算 | 泽雷特 THELEADER</title>
+<meta name="description" content="存量机房上液冷的完整路线图：六项现状勘察、四种部署形态对比、一次侧水温提升路径、六阶段不停机施工组织、300kW项目分期投资与回本测算、改造期风险管控清单。">
+<meta name="keywords" content="机房液冷改造,风液混布,不停机改造,老旧机房改造,液冷改造路线图,液冷分期投资,数据中心节能改造">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://www.zltdata.com/blog/liquid-cooling-retrofit-roadmap.html">
+<meta property="og:title" content="风液混布：老机房不停机上液冷的改造路线图">
+<meta property="og:description" content="存量机房上液冷的完整路线图：六项现状勘察、四种部署形态对比、一次侧水温提升路径、六阶段不停机施工组织、300kW项目分期投资与回本测算、改造期风险管控清单。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.zltdata.com/blog/liquid-cooling-retrofit-roadmap.html">
+<meta property="og:image" content="https://www.zltdata.com/images/og-image.jpg">
+<meta property="og:site_name" content="泽雷特 THELEADER">
+<meta property="article:published_time" content="2026-10-21">
+<meta property="article:author" content="高林">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.zltdata.com/images/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "风液混布：老机房不停机上液冷的改造路线图", "description": "存量机房上液冷的完整路线图：六项现状勘察、四种部署形态对比、一次侧水温提升路径、六阶段不停机施工组织、300kW项目分期投资与回本测算、改造期风险管控清单。", "author": {"@type": "Person", "@id": "https://www.zltdata.com/about/gao-lin.html#person", "name": "高林", "url": "https://www.zhihu.com/people/gao-lin-95-79-41"}, "publisher": {"@id": "https://www.zltdata.com/#organization"}, "datePublished": "2026-10-21", "dateModified": "2026-10-21", "mainEntityOfPage": "https://www.zltdata.com/blog/liquid-cooling-retrofit-roadmap.html", "image": "https://www.zltdata.com/images/og-image.jpg", "inLanguage": "zh-CN", "about": ["液冷改造", "风液混布", "不停机施工", "数据中心节能", "液冷机柜"], "wordCount": 6259}</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.zltdata.com/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://www.zltdata.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "风液混布：老机房不停机上液冷的改造路线图"}]}</script>
+<style>:root{--teal:#27C3C4;--dark:#142824;--blue:#0d47a1;--white:#fff;--gray:#8A9A96;--gray-l:#F5F7F7;--border:#E2E7EA;--text:#333}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",-apple-system,sans-serif;color:var(--text);line-height:2;background:var(--white)}nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.nav-inner{max-width:1260px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}.nav-brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--dark);text-decoration:none}.nav-brand img{height:36px}article{max-width:780px;margin:0 auto;padding:48px 24px 80px}h1{font-size:clamp(24px,4vw,36px);font-weight:900;color:var(--dark);margin-bottom:16px;line-height:1.4}.meta{font-size:13px;color:var(--gray);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.meta a{color:var(--blue);text-decoration:none}.summary-box{background:var(--gray-l);padding:20px 28px;border-radius:10px;margin-bottom:32px;font-size:16px;border-left:4px solid var(--teal)}h2{font-size:22px;font-weight:700;color:var(--dark);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--teal)}h3{font-size:18px;font-weight:700;color:var(--dark);margin:28px 0 12px}h4{font-size:16px;font-weight:700;color:var(--dark);margin:22px 0 10px}p{margin:0 0 18px;font-size:16px}blockquote{background:var(--gray-l);padding:16px 24px;border-radius:8px;margin:24px 0;border-left:4px solid var(--teal);font-size:15px;color:#555}blockquote strong{color:var(--dark)}strong{color:var(--dark)}ul,ol{margin:0 0 18px 24px}li{font-size:16px;margin-bottom:6px}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px}th,td{border:1px solid var(--border);padding:10px 14px;text-align:left}th{background:var(--gray-l);font-weight:700;color:var(--dark)}.cta-box{background:linear-gradient(135deg,var(--blue),var(--dark));color:var(--white);padding:28px 32px;border-radius:14px;margin:40px 0;text-align:center}.cta-box a{color:var(--teal);font-weight:700;text-decoration:none}footer{background:var(--dark);color:rgba(255,255,255,.55);text-align:center;padding:32px 24px;font-size:13px;line-height:2}footer a{color:var(--teal);text-decoration:none}@media(max-width:768px){article{padding:32px 16px}h1{font-size:22px}p,li{font-size:15px}table{font-size:13px}th,td{padding:8px 10px}}
+.author-box{background:linear-gradient(135deg,var(--dark),var(--blue));color:var(--white);padding:32px;border-radius:12px;margin-top:40px;line-height:1.8}
+.author-box .name{font-size:18px;font-weight:700;color:var(--teal);margin-bottom:8px}
+.author-box p{font-size:14px;opacity:.9;margin-bottom:0}
+.author-box .contact{font-size:13px;opacity:.75;margin-top:12px}
+
+h2{margin-top:44px;padding-left:12px;border-left:4px solid var(--teal)}
+h3{margin-top:30px;color:var(--dark)}
+h4{margin-top:22px}
+ul,ol{padding-left:26px;margin:14px 0}
+li{margin:6px 0}
+table{display:block;overflow-x:auto;max-width:100%}
+pre{background:var(--gray-l);border:1px solid var(--border);border-radius:6px;padding:14px 16px;overflow-x:auto;line-height:1.7;font-size:14px;margin:16px 0}
+code{background:var(--gray-l);padding:1px 5px;border-radius:3px;font-size:14px}
+.related-box{background:var(--gray-l);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin:34px 0 0}
+.related-box h3{margin:0 0 10px;font-size:17px;color:var(--dark)}
+.related-box ul{padding-left:22px;margin:0}
+.related-box li{margin:5px 0;font-size:15px}
+</style>
+</head><body>
+<nav><div class="nav-inner"><a href="../index.html" class="nav-brand"><img src="../images/logo.png" alt="泽雷特">THELEADER 泽雷特</a></div></nav>
+
+<article>
+<h1>风液混布：老机房不停机上液冷的改造路线图</h1>
+<div class="meta">2026-10-21 · 河北泽雷特-老高 · 原创</div>
+
+<div class="summary-box"><strong>导读：</strong>绝大多数机房不是新建的。这篇讲存量机房怎么在不中断业务的前提下分阶段上液冷：先勘察什么、CDU 部署在哪一层、一次侧水温怎么往上提、六个阶段怎么排、钱怎么分期投、回本周期怎么算。</div>
+
+<p>上一篇讲液冷柜柜体的时候，我留了个尾巴：存量机房改造，第一件事是核实楼板承重。这篇就把这件事完整展开。</p>
+
+<p>先说个现实：来找我们做液冷的客户里，<strong>真正新建智算中心的不超过三成</strong>。大多数是这种情况——</p>
+
+<p>机房是五年前、十年前建的，跑着 ERP、OA、虚拟化，机柜密度 4–6kW。今年老板拍板要上 AI，买了几台 GPU 服务器，一台 6kW 起步，八卡的能到 10kW 以上。插进原来的机柜，第一周就开始高温报警，空调开到 18℃ 也压不住，电费单子比上个月翻了一倍。</p>
+
+<p>这时候摆在面前的选项通常是三个：</p>
+
+<ol><li>推倒重建（钱和时间都不允许）</li><li>租新的智算中心机柜（数据出不去，或者成本受不了）</li><li><strong>在现有机房里做液冷改造</strong></li></ol>
+
+<p>第三个选项听着最省钱，但也是最容易翻车的。我见过改造到一半发现楼板承重不够的，见过管路铺完了发现没地方排水的，也见过液冷上了但 PUE 一点没降的——因为一次侧水温压根没提上去。</p>
+
+<p>这篇就讲怎么把这件事做对。不讲理论，讲实施顺序。</p>
+
+<hr>
+
+<h2>一、先判断：你的机房到底该不该改</h2>
+
+<p>不是所有机房都适合改造。先看三条判断线。</p>
+
+<h3>判断线 1：功率密度</h3>
+
+<p>拿一张纸，把你机房每个机柜的实际功率列出来（不是铭牌功率，是实测或 PSU 读数）。</p>
+
+<ul><li>平均 &lt; 4kW/柜，最高 &lt; 8kW/柜 → <strong>不用上液冷</strong>，优化气流组织、加冷通道封闭就够了</li><li>有 1–3 个柜超过 10kW/柜，其余都很低 → <strong>适合局部改造</strong>（只改这几个热点柜）</li><li>计划新增一批 GPU，预计整排超过 15kW/柜 → <strong>适合成排改造</strong></li><li>整体规划超过 30kW/柜 → 这已经接近重建了，要重新评估</li></ul>
+
+<p><strong>风冷的经济上限大概是 12–15kW/柜。</strong> 超过这个数，不是不能做，是制冷的边际成本急剧上升：空调数量、风量、噪音、送风距离、冷热气流混合损失，全都失控。超过 15kW/柜，液冷的经济性就开始压过风冷。</p>
+
+<h3>判断线 2：业务能不能停机</h3>
+
+<p>这是改造方案的约束条件之王。</p>
+
+<ul><li>能停机（有停机窗口、有灾备）→ 改造难度大幅下降</li><li>完全不能停机 → 必须走"基础设施先行 + 逐柜割接"路线，本篇第七节专门讲</li></ul>
+
+<h3>判断线 3：机房剩余生命周期</h3>
+
+<ul><li>自有产权、还有 5 年以上使用计划 → 改造值得投入</li><li>租约只剩 1–2 年 → 别改，租算力或者用<a href="https://www.zltdata.com/products/modular-datacenter.html">微模块一体柜</a>过渡更划算</li><li>建筑本身有结构问题 → 先做结构鉴定</li></ul>
+
+<hr>
+
+<h2>二、改造前必须摸清的六项家底</h2>
+
+<p>我给客户做改造方案前，会先出一版勘察清单。这六项，一项都不能缺。</p>
+
+<h3>1. 电力容量（最容易卡脖子）</h3>
+
+<p>液冷解决的是散热，但高密度首先是<strong>电</strong>的问题。一台 8 卡 GPU 服务器满配功耗 6–10kW，一个 42U 柜放 4 台就是 40kW。</p>
+
+<p>要核实：</p>
+
+<ul><li>市电引入容量、变压器容量与当前负载率</li><li>UPS 容量、电池后备时间、冗余方式（N+1？2N？）</li><li>末端配电：列头柜开关容量、电缆截面、PDU 额定值</li><li><strong>机柜回路是不是单相还是三相</strong></li></ul>
+
+<p>常见的情况：机房总容量够，但某个列头柜的开关只有 63A，电缆是 16mm²，根本带不动新加的负载。这时候电力改造的成本可能比液冷本身还高。</p>
+
+<p>相关的配电设计，我在《数据中心配电怎么做？列头柜 PDU 动环一个都不能少》和《数据中心供配电全链路》里讲得比较细，这里不重复。</p>
+
+<h3>2. 楼板承重（最容易被忽略，也是最容易翻车的）</h3>
+
+<p>液冷柜满载 1.5–2 吨，占地约 0.7–1.0 m²，折算成楼板荷载约 <strong>1500–2800 kg/m²</strong>。</p>
+
+<p>而很多老机房的设计值是：</p>
+
+<ul><li>普通办公楼改造的机房：<strong>500–800 kg/m²</strong></li><li>正规数据中心机房：<strong>800–1200 kg/m²</strong></li><li>高架地板（防静电地板）：集中载荷通常 1000–1500 kg/m²，均布载荷 1000–2000 kg/m²</li></ul>
+
+<p><strong>这就意味着，液冷柜很可能超出原有机房的承重设计。</strong></p>
+
+<p>怎么办：</p>
+
+<ul><li>调原建筑设计图，确认设计荷载</li><li>必要时请结构专业做鉴定</li><li>解决方案：柜下加承重底座分散荷载、调整机柜布局避开梁的薄弱位置、楼板加固（碳纤维布或粘钢）</li></ul>
+
+<p>这件事<strong>必须在设计阶段做</strong>，不能等柜子到了现场发现地板下沉。</p>
+
+<h3>3. 制冷现状</h3>
+
+<p>要摸清：</p>
+
+<ul><li>空调形式：风冷直膨？冷冻水型？双冷源？</li><li>总制冷量、当前负荷率、冗余方式</li><li>送回风方式：地板下送风？上送风？有没有冷通道封闭？</li><li>室内机/室外机的位置、管路走向</li></ul>
+
+<p>这决定了你的一次侧怎么接（第五节展开）。</p>
+
+<h3>4. 空间与路由</h3>
+
+<p>管路要从 CDU 走到每个机柜，路由是最难的工程问题：</p>
+
+<ul><li>有没有架空地板？地板下高度多少？（低于 300mm 基本走不了管）</li><li>有没有上走线桥架？桥架承重多少？</li><li>要不要穿墙、穿楼板？有没有防火封堵条件？</li><li>层高够不够（管路 + 桥架 + 冷通道顶棚）</li><li>机柜前后维护空间够不够（液冷要求前后各 1000mm）</li></ul>
+
+<h3>5. 一次侧冷源</h3>
+
+<p>这是决定 PUE 能不能降下来的关键，我在第五节单独讲。</p>
+
+<p>简单说：有没有冷冻水系统？水温是多少？有没有冷却塔？冬季能不能自然冷却？</p>
+
+<h3>6. 运维能力</h3>
+
+<p>最后一条，也是最"软"但最要命的一条：</p>
+
+<ul><li>有没有人能看懂液冷系统的 P&amp;ID 图？</li><li>有没有水质检测的能力和流程？</li><li>出了漏液告警，值班的人知道第一步该干什么吗？</li></ul>
+
+<p>我见过太多系统建得好、运维跟不上的案例。<strong>改造方案里必须包含培训和运维手册</strong>，而且要写进合同。</p>
+
+<hr>
+
+<h2>三、风液混布的四种部署形态</h2>
+
+<p>按改造力度从轻到重，我把它分成四档。</p>
+
+<h3>形态 1：局部热点柜替换（改造最轻）</h3>
+
+<p><strong>做法</strong>：把机房里功率最高的那 2–4 个柜，换成液冷柜，配一台小 CDU。其余机柜完全不动。</p>
+
+<p><strong>适用</strong>：只有少数 GPU 节点，其余还是通用服务器。</p>
+
+<p><strong>优点</strong>：投资最小（几十万起步），施工周期短（1–2 周），对现有业务影响小。<br>
+<strong>缺点</strong>：CDU 分散，运维点变多；一次侧改造收益有限。</p>
+
+<p><strong>注意</strong>：即使只改 2 个柜，也要考虑 CDU 放哪、一次侧从哪接、排水怎么解决。</p>
+
+<h3>形态 2：液冷列 + 列间 CDU（主流选择）</h3>
+
+<p><strong>做法</strong>：把一整排（通常 6–12 台柜）改造成液冷列，配列级 CDU，做封闭冷通道或冷热通道隔离。</p>
+
+<p><strong>适用</strong>：有一个明确的 AI/GPU 集群需求，规模在 100–400kW。</p>
+
+<p><strong>优点</strong>：规模效应明显，CDU 集中管理，PUE 下降可观。<br>
+<strong>缺点</strong>：需要一次侧管路改造，施工周期 3–6 周。</p>
+
+<p>这是我最常推荐给客户的形态。</p>
+
+<h3>形态 3：区域液冷岛</h3>
+
+<p><strong>做法</strong>：在机房里划出一块区域（比如 1/4 或 1/3 面积），做成独立的液冷区，含独立 CDU、独立配电、独立冷通道，用物理隔断与风冷区分开。</p>
+
+<p><strong>适用</strong>：风冷区和液冷区长期共存，且两者密度差异极大。</p>
+
+<p><strong>优点</strong>：两个区域互不干扰，风冷区可以继续按原方式运行，液冷区可以按最优设计。<br>
+<strong>缺点</strong>：需要物理隔断，对机房布局有一定破坏。</p>
+
+<h3>形态 4：整体液冷化</h3>
+
+<p><strong>做法</strong>：整个机房改造为液冷，风冷系统降级为备份和环境保障。</p>
+
+<p><strong>适用</strong>：机房整体要转型为智算/AI 算力用途。</p>
+
+<p><strong>优点</strong>：PUE 最优，密度可以做满。<br>
+<strong>缺点</strong>：投资大（几百万到千万级），施工周期长（2–4 个月），基本等同于重建机电系统。</p>
+
+<p><strong>选择建议</strong>：绝大多数客户应该从形态 1 或形态 2 起步，预留向形态 3、4 扩展的接口。这个"预留"很重要——管路主管按最终规模设计，支管按当前规模装。</p>
+
+<hr>
+
+<h2>四、CDU 放哪？三种部署层级的对比</h2>
+
+<p>CDU（Coolant Distribution Unit，冷量分配单元）是液冷系统的心脏。它的部署层级，直接影响改造方案。</p>
+
+<table>
+<tr><th>层级</th><th>单体容量</th><th>部署位置</th><th>优点</th><th>缺点</th><th>适用场景</th></tr>
+<tr><td><strong>柜级 CDU</strong></td><td>10–50kW</td><td>机柜内底部或顶部</td><td>即插即用，无需大规模管路，单柜独立</td><td>每台柜一个维护点，效率低，占机柜空间</td><td>试点、少量柜、租赁场景</td></tr>
+<tr><td><strong>列级 CDU</strong></td><td>50–400kW</td><td>机柜列端或列间</td><td>集中管理，效率高，扩展性好</td><td>需要列间管路，需要专门位置</td><td><strong>主流选择</strong></td></tr>
+<tr><td><strong>房间级 CDU</strong></td><td>500kW–2MW+</td><td>独立设备间/机房角落</td><td>规模效应最好，冗余能力强</td><td>管路最长，需要专门机房，一次性投资大</td><td>新建智算中心、形态 4</td></tr>
+</table>
+
+<p><strong>CDU 选型要盯的几个硬指标</strong>：</p>
+
+<ul><li><strong>泵冗余</strong>：N+1 是基本要求，泵要支持热插拔或者自动切换</li><li><strong>板换</strong>：一用一备或者预留备用接口；板换要能拆开清洗（<strong>留检修空间！</strong>）</li><li><strong>过滤精度</strong>：通常 50–100μm，带压差监测</li><li><strong>露点跟随控制</strong>：必须要有（见上一篇凝露章节）</li><li><strong>对外接口</strong>：Modbus/BACnet/SNMP，要能接入 DCIM</li><li><strong>一次侧接口</strong>：法兰规格、水温范围、流量要求，要和你的现有冷冻水系统对得上</li></ul>
+
+<p><strong>最容易被忽略的一点：CDU 的检修空间。</strong> 板式换热器用久了要拆开清洗，需要把板片一片片抽出来。板换正面至少要留 <strong>800–1000mm</strong> 的净空。我见过 CDU 紧贴墙安装的，第一次清洗就得拆墙。</p>
+
+<p>更多关于 CDU 的原理，可以看我之前写的《什么是液冷机柜里的 CDU？没有它，液冷就是一堆管子》。</p>
+
+<hr>
+
+<h2>五、一次侧怎么接：改造成败的关键在这里</h2>
+
+<p>这是我最想讲的一节，因为<strong>很多改造项目上了液冷，PUE 却没降下来，问题就出在这一节</strong>。</p>
+
+<h3>为什么液冷能降 PUE？很多人理解错了</h3>
+
+<p>不少人以为：液冷效率高，所以 PUE 低。<strong>这只对了一半。</strong></p>
+
+<p>液冷真正带来的 PUE 红利，来自一件事：<strong>它允许一次侧使用温度高得多的冷却水。</strong></p>
+
+<p>传统风冷机房，为了把空气降到 18–24℃，冷冻水供水温度通常要做到 7–12℃。这个水温只能靠压缩机制冷，压缩机是 PUE 里的耗电大头。</p>
+
+<p>液冷系统，冷板直接贴芯片，即使供液温度 35–40℃，芯片结温也能压住。而 <strong>35–40℃ 的冷却水，在大部分中国地区，一年中有大量时间可以靠自然冷源（室外冷空气）获得，根本不需要开压缩机</strong>。</p>
+
+<p>这才是液冷节能的真正机制：<strong>提高水温 → 延长自然冷却时间 → 压缩机少开或不开 → PUE 下降。</strong></p>
+
+<h3>三种现状，三种接法</h3>
+
+<p><strong>现状 A：已有冷冻水系统（冷水机组 + 冷冻水泵 + 末端空调）</strong></p>
+
+<p>这是最好的情况。做法：</p>
+
+<ul><li>从冷冻水供回水主管接一路到 CDU 一次侧</li><li><strong>同时把冷冻水供水温度从 7℃ 提到 12–18℃</strong>（甚至更高）</li><li>末端空调侧：因为液冷承担了大部分负荷，风冷末端需求下降，可以适当减少运行台数，或者改造为高温冷水型</li></ul>
+
+<p><strong>提温这一步非常关键。</strong> 冷水机组的出水温度每提高 1℃，COP 大约能提升 2%–3%。从 7℃ 提到 15℃，COP 提升幅度相当可观。而且提温之后，过渡季节和冬季可以更快切换到自然冷却。</p>
+
+<p>注意：提温要逐步进行，每次提 1–2℃，观察末端空调的除湿能力和机房湿度变化。</p>
+
+<p><strong>现状 B：只有风冷直膨空调（没有冷冻水）</strong></p>
+
+<p>这是老机房最常见的情形。做法：</p>
+
+<ul><li>需要新增一次侧冷源。三种选择：</li></ul>
+
+<ol><li><strong>干冷器（Dry Cooler）</strong>：靠室外空气冷却载冷剂（乙二醇溶液），无水耗，维护简单。北方地区效果极好。</li><li><strong>闭式冷却塔</strong>：靠蒸发冷却，效率高，但有水耗和水处理问题。</li><li><strong>风冷冷水机组</strong>：最灵活，但造价和运行成本最高。</li></ol>
+
+<ul><li><strong>首选干冷器 + 自然冷却</strong>，在华北、西北地区性价比最高</li></ul>
+
+<p><strong>现状 C：已有冷却塔 + 板式换热（自然冷却系统）</strong></p>
+
+<p>恭喜，这是最接近理想状态的。直接把 CDU 一次侧接到板换二次侧即可，水温调到 30–35℃，全年大部分时间免压缩机运行。</p>
+
+<h3>一次侧水质</h3>
+
+<p>CDU 的板换把一次侧和二次侧隔开了，所以一次侧水质要求相对宽松，可以用普通冷冻水（加药处理）。但要注意：</p>
+
+<ul><li>一次侧水温提高后，如果水质硬，板换结垢风险上升</li><li>建议一次侧也做基本的水处理（软化/加药）</li><li>板换要定期清洗</li></ul>
+
+<hr>
+
+<h2>六、管路路由：最难啃的工程骨头</h2>
+
+<h3>先算流量，再定管径</h3>
+
+<p>流量计算公式：</p>
+
+<p><strong>流量（L/min）= 功率（kW）× 60 ÷ [比热容（kJ/kg·K）× 温差（K）× 密度（kg/L）]</strong></p>
+
+<p>举个例子：一台 30kW 的液冷柜，二次侧供回水温差取 10K，工质为水基（比热容约 3.8 kJ/kg·K，含丙二醇后略降，密度约 1.03 kg/L）：</p>
+
+<p>流量 ≈ 30 × 60 ÷ (3.8 × 10 × 1.03) ≈ <strong>46 L/min</strong></p>
+
+<p>10 台这样的柜，总流量约 460 L/min（27.6 m³/h）。按经济流速 1.5–2.5 m/s 计算：</p>
+
+<ul><li>单柜支管：DN20–DN25</li><li>列级主管：DN50–DN65</li><li>房间级主管：DN80–DN125</li></ul>
+
+<p><strong>这个计算要写在设计文件里。</strong> 管径选小了，流速过高、噪音大、冲刷腐蚀；选大了，成本浪费、占用空间。</p>
+
+<h3>路由方案怎么选</h3>
+
+<table>
+<tr><th>路由方式</th><th>适用条件</th><th>注意事项</th></tr>
+<tr><td><strong>架空地板下</strong></td><td>地板下净高 ≥ 300mm</td><td>管道要做支墩（不能压在地板支架上）；要做防水托盘；检修口要留够</td></tr>
+<tr><td><strong>上走线桥架</strong></td><td>层高充足，桥架承重够</td><td>管道+液体重量大，必须单独做承重支架，不能挂在原有弱电桥架上</td></tr>
+<tr><td><strong>沿墙明装</strong></td><td>走廊或靠墙机柜</td><td>要做好保温和防碰撞保护</td></tr>
+<tr><td><strong>穿墙/穿楼板</strong></td><td>跨房间</td><td>必须做套管 + 防火封堵 + 防水处理</td></tr>
+</table>
+
+<h3>管材质选择</h3>
+
+<p><strong>二次侧（CDU 到机柜）：强烈推荐 316L 不锈钢。</strong><br>
+理由：清洁度容易保证、耐腐蚀、焊接可靠。碳钢管道便宜，但内壁会生锈，锈渣是冷板堵塞的头号杀手。</p>
+
+<p><strong>一次侧（冷源到 CDU）：</strong> 可以用碳钢（做内防腐）或不锈钢，视水质而定。</p>
+
+<h3>三个必须做的细节</h3>
+
+<p><strong>1. 分段隔离阀</strong><br>
+每个机柜支路、每个 CDU 进出口都要装隔离阀。<strong>没有隔离阀，一个柜检修就得停整个系统。</strong> 这是最基本的设计要求，但在赶工的项目里经常被省掉。</p>
+
+<p><strong>2. 保温</strong><br>
+一次侧低温水管路必须做保温（防凝露 + 节能）。二次侧管路如果温度高于露点，可以不保温，但穿越高温区域时仍建议做。</p>
+
+<p><strong>3. 排气阀与排污阀</strong><br>
+系统最高点装自动排气阀，最低点装排污阀。这是注液、排气、换液的基础设施，缺了后期运维会非常痛苦。</p>
+
+<hr>
+
+<h2>七、不停机施工：分六个阶段走</h2>
+
+<p>这是本篇的核心。完全不停机的改造，讲究的是<strong>顺序</strong>——先做不影响业务的部分，最后才碰业务。</p>
+
+<h3>阶段 0：勘察与设计（2–4 周）</h3>
+
+<p><strong>产出</strong>：勘察报告、改造方案、施工图纸（含 P&amp;ID 管路图、配电图、路由图）、应急预案、割接方案。</p>
+
+<p><strong>这阶段不停机，纯纸上工作。但这一步做不扎实，后面全是返工。</strong></p>
+
+<p>关键交付物：</p>
+
+<ul><li>楼板承重核算书</li><li>电力容量核算书</li><li>制冷负荷计算书</li><li>管路水力计算</li><li>逐柜割接顺序表</li></ul>
+
+<h3>阶段 1：基础设施先行（2–4 周，不停机）</h3>
+
+<p>在不影响任何业务的前提下，把"公共部分"先做完：</p>
+
+<ol><li><strong>电力扩容</strong>：新增电缆、更换开关、扩容 UPS（如需）</li><li><strong>管路主管铺设</strong>：从 CDU 位置沿路由铺到各个机柜位置附近，末端先封堵（预留接口）</li><li><strong>CDU 基础与就位</strong>：设备基础、一次侧管路接驳、排水</li><li><strong>桥架/支架</strong>：管路承重支架、走线桥架加固</li><li><strong>监控接入</strong>：DCIM 平台扩容，新增温湿度、漏液、流量、电力监测点位</li><li><strong>排水设施</strong>：这是老机房最容易缺的（见第八节坑 5）</li></ol>
+
+<p><strong>这个阶段的特点是：灰尘大、噪音大，但不碰任何运行中的设备。</strong> 施工区域要做好物理隔断和防尘，特别是精密设备区。</p>
+
+<p><strong>验收点</strong>：主管路压力测试合格、CDU 单机调试合格、监控系统联调合格。</p>
+
+<h3>阶段 2：首台试点柜（1–2 天，需要短窗口）</h3>
+
+<p><strong>不要一上来就批量换。</strong> 先选一台做试点。</p>
+
+<p>选柜原则：</p>
+
+<ul><li>业务重要性相对低，或者已有备份/冗余</li><li>功率密度高（改造收益明显）</li><li>位置便于施工</li></ul>
+
+<p><strong>割接流程</strong>（典型 4–8 小时窗口）：</p>
+
+<ol><li>业务迁移/切换到备份节点（业务侧操作）</li><li>旧柜下电、拆除设备、移出旧柜</li><li>新液冷柜就位、调平、固定、接地</li><li>管路接驳（主管预留口 → 柜内 Manifold）</li><li>注液、排气、保压检漏</li><li>设备上架、接线、冷板对接</li><li>CDU 调试、流量平衡标定</li><li>通电、开机、烤机测试（至少 4 小时满载）</li><li>业务回切</li><li>观察</li></ol>
+
+<p><strong>回退方案必须提前写好</strong>：如果 8 小时内没完成，怎么恢复？旧柜保留在原位旁边？还是业务继续跑在备份上？这个预案要在割接前和业务方确认签字。</p>
+
+<h3>阶段 3：稳定运行观察期（4–8 周）</h3>
+
+<p><strong>这一步不能省。</strong> 首台柜跑起来之后，观察至少一个月：</p>
+
+<ul><li>供回液温度曲线是否稳定</li><li>CDU 的补液速率（判断有没有微渗）</li><li>水质指标变化趋势（电导率、pH）</li><li>服务器结温与降频情况</li><li>凝露情况（柜内湿度）</li><li>噪音、振动</li></ul>
+
+<p><strong>同时验证一件事：一次侧水温能不能继续往上提。</strong> 逐步提温，每档 1–2℃，观察服务器温度和机房湿度，找到你机房的最优水温点。这一步直接决定了你的 PUE 最终能到多少。</p>
+
+<h3>阶段 4：批量复制（每批 3–5 柜）</h3>
+
+<p>试点验证通过之后，按批次推广。每批控制在 3–5 柜，批次之间留 1–2 周观察期。</p>
+
+<p><strong>批量阶段的好处</strong>：管路已铺设、流程已验证、人员已熟练，单柜割接时间会大幅缩短（从 8 小时降到 3–4 小时）。</p>
+
+<h3>阶段 5：风冷系统降级与优化（改造完成后）</h3>
+
+<p>液冷稳定运行之后，风冷系统的角色要重新定位：</p>
+
+<ul><li>从"主制冷"变成"环境保障 + 备份"</li><li>减少运行台数，或者调整送风温度（可以上调，因为液冷柜排热少）</li><li>保留的制冷能力要能覆盖：液冷失效时，风冷能否兜住基础业务（这是 N+1 思路）</li></ul>
+
+<p><strong>这一步是省电费的关键。</strong> 很多项目液冷上线了，空调还按老参数满负荷跑，那 PUE 当然降不下来。</p>
+
+<hr>
+
+<h2>八、改造的六个坑（每一个我都见过）</h2>
+
+<h3>坑 1：楼板承重没核实</h3>
+
+<p>后果最严重。柜子到了现场放不上去，或者放上去之后地板下沉、高架地板变形。</p>
+
+<p><strong>预防</strong>：设计阶段调图核算，必要时做结构鉴定。</p>
+
+<h3>坑 2：一次侧水温没提升</h3>
+
+<p>上了液冷，PUE 从 1.6 只降到 1.5。老板问为什么，答不上来。</p>
+
+<p><strong>预防</strong>：把"一次侧水温提升方案"作为改造方案的必备章节，明确提温步骤和目标值。</p>
+
+<h3>坑 3：CDU 没留检修空间</h3>
+
+<p>板换第一次清洗就要拆墙或者移设备。</p>
+
+<p><strong>预防</strong>：CDU 四周留检修通道，板换正面留 800–1000mm 净空，这在设备布置图上要标注。</p>
+
+<h3>坑 4：没做分段隔离阀</h3>
+
+<p>一个柜漏液，整个系统停机排空。</p>
+
+<p><strong>预防</strong>：每个支路、每个 CDU 进出口都装隔离阀，阀门要有编号和标识，图纸上标清楚。</p>
+
+<h3>坑 5：没有排水和漏液收集设施</h3>
+
+<p><strong>老机房通常没有地漏。</strong> 液冷系统一旦漏液，或者需要排空换液，几十上百升的液体往哪排？</p>
+
+<p>我见过最狼狈的一次：换液时工人们用桶一桶一桶往外提。</p>
+
+<p><strong>预防</strong>：改造时新增排水点（地漏或集水坑），或者在 CDU 区域做集液盘 + 排污泵。同时把漏液检测接入<a href="https://www.zltdata.com/products/dcim.html">动环监控 DCIM</a>。</p>
+
+<h3>坑 6：运维人员没培训</h3>
+
+<p>系统上线三个月，第一次漏液告警，值班的人不知道关哪个阀门，也不确定该不该断电。慌乱中做了错误处置，把小事故变成大事故。</p>
+
+<p><strong>预防</strong>：培训写进合同，内容包括：系统原理、P&amp;ID 图识读、正常参数范围、告警分级与处置流程、应急联系人。<strong>并且要有实操演练，不能只是讲 PPT。</strong></p>
+
+<hr>
+
+<h2>九、算笔账：一个 300kW 改造项目值不值</h2>
+
+<p><strong>项目设定</strong>：某存量机房，现有 20 个机柜，平均 5kW/柜，总 IT 负载 100kW。计划新增 GPU 集群，改造 6 个柜为液冷，新增 IT 负载 200kW，改造后总 IT 负载 300kW。</p>
+
+<h3>投资构成（参考量级，因项目和地区浮动）</h3>
+
+<table>
+<tr><th>项目</th><th>数量</th><th>参考投资</th></tr>
+<tr><td>液冷机柜（含 Manifold、快接头）</td><td>6 台</td><td>60–120 万元</td></tr>
+<tr><td>列级 CDU（含冗余泵、板换）</td><td>1–2 台</td><td>40–80 万元</td></tr>
+<tr><td>二次侧管路（不锈钢 + 阀门 + 安装）</td><td>1 套</td><td>30–60 万元</td></tr>
+<tr><td>一次侧改造（干冷器/水温提升/接口）</td><td>1 套</td><td>40–100 万元</td></tr>
+<tr><td>电力扩容（列头柜、电缆）</td><td>1 项</td><td>20–50 万元</td></tr>
+<tr><td>监控与漏液检测扩容</td><td>1 项</td><td>8–15 万元</td></tr>
+<tr><td>安装调试、培训、验收</td><td>1 项</td><td>20–40 万元</td></tr>
+<tr><td><strong>合计</strong></td><td></td><td><strong>约 220–465 万元</strong></td></tr>
+</table>
+
+<h3>收益测算</h3>
+
+<p><strong>电费节省</strong>：</p>
+
+<ul><li>改造前：IT 100kW，PUE 1.8 → 总功耗 180kW</li><li>改造后：IT 300kW，PUE 1.25 → 总功耗 375kW</li><li>如果不上液冷，300kW IT 用风冷（PUE 1.7）→ 总功耗 510kW</li></ul>
+
+<p>按年运行 8760 小时、电价 0.7 元/度计算：</p>
+
+<ul><li>液冷方案年电费：375kW × 8760h × 0.7 = <strong>约 230 万元</strong></li><li>风冷方案年电费：510kW × 8760h × 0.7 = <strong>约 313 万元</strong></li><li><strong>年节省约 83 万元</strong></li></ul>
+
+<p><strong>其他收益</strong>：</p>
+
+<ul><li>避免了外租智算机柜的费用（按 200kW、8 元/kW/天算，年约 58 万元）</li><li>避免了机房搬迁或扩建的一次性投入</li><li>机柜空间释放（液冷柜密度高，省出的空间还能继续扩）</li></ul>
+
+<p><strong>静态回收期</strong>：约 <strong>3–5 年</strong>（只算电费）；如果算上避免的外租费用，约 <strong>2–3 年</strong>。</p>
+
+<p><strong>这个账是保守的</strong>，因为它还没算：电价上涨、制冷设备寿命延长（空调负荷下降）、以及 AI 业务的收益本身。</p>
+
+<hr>
+
+<h2>十、什么时候不该改造？</h2>
+
+<p>说实话，有几种情况我是不建议改造的：</p>
+
+<ol><li><strong>层高不足 2.8m</strong>：管路 + 桥架 + 冷通道顶棚放不下</li><li><strong>楼板承重低于 800 kg/m² 且无法加固</strong>：结构性硬约束</li><li><strong>电力容量已到上限且扩容无解</strong>：市电引入扩容涉及外线，成本和周期都不可控</li><li><strong>租约剩余不足 2 年</strong>：改造投资收不回来</li><li><strong>建筑有消防或结构的历史遗留问题</strong>：改造会触发整体验收，牵一发动全身</li></ol>
+
+<p>遇到这几种情况，我通常会建议客户考虑<a href="https://www.zltdata.com/products/modular-datacenter.html">微模块一体柜</a>——它是独立于原机房的"柜内数据中心"，自带配电、制冷、监控，工厂预制、现场 3 小时安装，不需要动原机房的机电系统。虽然单柜密度不如纯液冷，但对"临时加几台 GPU、不想动机房"的场景，是更务实的解。</p>
+
+<hr>
+
+<h2>十一、写在最后</h2>
+
+<p>我做改造项目最大的体会：<strong>液冷改造的难点，从来不在液冷本身。</strong></p>
+
+<p>难点在于：楼板承不承得住、管路走得通走不通、电力够不够、一次侧水温能不能提上去、排水往哪排、值班的人会不会处置告警。这些都是"液冷之外"的事，但恰恰是它们决定了项目成败。</p>
+
+<p>所以如果你正在考虑改造，我的建议是：别急着询价，先做勘察。把家底摸清楚，方案自然就出来了。</p>
+
+<p>我们做液冷项目，前期勘察是不收费的。因为方案做错了，后面返工的成本比勘察费高一百倍——这个账，我们比谁都清楚。</p>
+
+<hr>
+
+<div class="related-box"><h3>相关阅读</h3>
+
+<ul><li><a href="https://www.zltdata.com/blog/liquid-cooling-cabinet-structure-design.html">液冷机柜的柜体，和风冷柜根本不是一回事</a></li><li><a href="https://www.zltdata.com/blog/what-is-cdu-in-liquid-cooling.html">什么是液冷机柜里的 CDU？没有它，液冷就是一堆管子</a></li><li><a href="https://www.zltdata.com/blog/datacenter-energy-saving-retrofit.html">数据中心节能改造怎么做</a></li><li><a href="https://www.zltdata.com/blog/datacenter-overall-solution.html">数据中心整体解决方案：从机柜到微模块</a></li><li><a href="https://www.zltdata.com/blog/liquid-cooling-or-not.html">你的机房该上液冷吗？掏钱之前，先过这三道闸门</a></li></ul></div>
+
+<div class="related-box"><h3>相关产品</h3>
+
+<ul><li><a href="https://www.zltdata.com/products/liquid-cooling-cabinet.html">液冷温控机柜</a> —— 25–40kW/柜，支持存量机房替换</li><li><a href="https://www.zltdata.com/products/modular-datacenter.html">模块化数据中心（双排冷通道）</a> —— 不动原机房的扩容方案</li><li><a href="https://www.zltdata.com/products/smart-cabinet.html">智能一体柜（单排微模块）</a> —— 柜内完整数据中心，3 小时安装</li><li><a href="https://www.zltdata.com/products/power-dist-cabinet.html">数据中心配电柜（列头柜）</a> —— 改造扩容电力监测</li><li><a href="https://www.zltdata.com/products/dcim.html">机房动环监控系统 DCIM</a> —— 改造后统一监控平台</li><li><a href="https://www.zltdata.com/products/cold-aisle.html">冷通道封闭系统</a> —— 风冷区与液冷区隔离</li></ul></div>
+
+<blockquote>作者：高林，河北泽雷特电子科技创始人，数据中心基础设施行业从业 20 年。<br>
+联系：18603311919 | www.zltdata.com</blockquote>
+
+<div class="cta-box">
+<p style="font-size:16px;margin-bottom:10px"><strong>🤝 拿不准你的机房适不适合上液冷？</strong></p>
+<p style="font-size:14px;opacity:.9;margin-bottom:0">私信我或直接打电话，<strong>免费上门做热密度评估</strong>，帮你判断液冷是否适合你的场景，以及用什么方案最划算——不管最后要不要做，评估本身不花钱。</p>
+<p style="font-size:13px;opacity:.75;margin-top:10px">📞 18603311919 | 📧 gl@zltdata.com | 🌐 <a href="https://www.zltdata.com" style="color:#27C3C4">www.zltdata.com</a></p>
+</div>
+
+<div class="author-box">
+  <div class="name">河北泽雷特-老高</div>
+  <p>做机柜20年了。自有工厂在河北，服务器机柜、智能一体柜、微模块数据中心，厂家直发，没有中间商。同时也做数据中心产品销售+机房运维，河北上千家企业的选择。机房有散热、扩容、运维方面的困惑？私信我，免费上门帮你看。</p>
+  <div class="contact">📞 18603311919 | 📧 gl@zltdata.com | 🌐 www.zltdata.com | 📖 zltdata.com/blog/</div>
+</div>
+</article>
+
+<footer>
+© 2026 河北泽雷特电子科技有限公司 | <a href="https://beian.miit.gov.cn/">冀ICP备18036691号-4</a> | 本站文章可自由引用，请保留出处和作者信息
+</footer>
+
+</body>
+</html>

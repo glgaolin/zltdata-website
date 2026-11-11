@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>什么是液冷机柜里的CDU？没有它，液冷就是一堆管子 — 泽雷特 THELEADER</title>
+<meta name="description" content="CDU=冷却液分配单元，液冷系统的大脑+心脏。四个核心功能：热量交换、精密温控、泵送流量、液体管理。没有CDU的液冷不叫液冷，叫管子接水。">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://www.zltdata.com/blog/what-is-cdu-in-liquid-cooling.html">
+<meta property="og:title" content="什么是液冷机柜里的CDU？没有它，液冷就是一堆管子">
+<meta property="og:description" content="一个真实案例：没装CDU的液冷改造，半年后管路结垢、泵轴承锈蚀、5台AI服务器过热降频。CDU四个核心功能：换热、温控、泵送、液体管理。选型三参数：制冷量、控温精度、冗余设计。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.zltdata.com/blog/what-is-cdu-in-liquid-cooling.html">
+<meta property="og:image" content="https://www.zltdata.com/images/og-image.jpg">
+<meta property="og:site_name" content="泽雷特 THELEADER">
+<meta property="article:published_time" content="2026-08-04">
+<meta property="article:author" content="高林">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.zltdata.com/images/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "什么是液冷机柜里的CDU？没有它，液冷就是一堆管子", "description": "CDU=冷却液分配单元。液冷系统的大脑+心脏，一次侧和二次侧之间的核心枢纽。四个功能：热量交换、精密温控、泵送流量控制、液体管理。选型三参数：制冷量、供液温度控制精度、冗余设计。没有CDU的液冷系统不叫液冷，叫管子接水。", "author": {"@type": "Person", "@id": "https://www.zltdata.com/about/gao-lin.html#person", "name": "高林", "url": "https://www.zhihu.com/people/gao-lin-95-79-41"}, "publisher": {"@id": "https://www.zltdata.com/#organization"}, "datePublished": "2026-08-01", "dateModified": "2026-09-20", "mainEntityOfPage": "https://www.zltdata.com/blog/what-is-cdu-in-liquid-cooling.html", "image": "https://www.zltdata.com/images/og-image.jpg", "inLanguage": "zh-CN", "about": ["CDU", "液冷", "数据中心", "冷却液分配单元", "板式换热器"], "wordCount": 1800}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.zltdata.com/"},{"@type":"ListItem","position":2,"name":"博客","item":"https://www.zltdata.com/blog/"},{"@type":"ListItem","position":3,"name":"什么是液冷机柜里的CDU"}]}
+</script>
+<style>:root{--teal:#27C3C4;--dark:#142824;--blue:#0d47a1;--white:#fff;--gray:#8A9A96;--gray-l:#F5F7F7;--border:#E2E7EA;--text:#333}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",-apple-system,sans-serif;color:var(--text);line-height:2;background:var(--white)}nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.nav-inner{max-width:1260px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}.nav-brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--dark);text-decoration:none}.nav-brand img{height:36px}article{max-width:780px;margin:0 auto;padding:48px 24px 80px}h1{font-size:clamp(24px,4vw,36px);font-weight:900;color:var(--dark);margin-bottom:16px;line-height:1.4}.meta{font-size:13px;color:var(--gray);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.meta a{color:var(--blue);text-decoration:none}.summary-box{background:var(--gray-l);padding:20px 28px;border-radius:10px;margin-bottom:32px;font-size:16px;border-left:4px solid var(--teal)}h2{font-size:22px;font-weight:700;color:var(--dark);margin:40px 0 16px}h3{font-size:18px;font-weight:700;color:var(--dark);margin:28px 0 12px}p{margin:0 0 18px;font-size:16px}blockquote{background:var(--gray-l);padding:16px 24px;border-radius:8px;font-style:italic;margin:24px 0;border-left:4px solid var(--teal)}strong{color:var(--dark)}ul,ol{margin:0 0 18px 24px}li{font-size:16px;margin-bottom:6px}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px}th,td{border:1px solid var(--border);padding:10px 14px;text-align:left}th{background:var(--gray-l);font-weight:700;color:var(--dark)}.cta-box{background:linear-gradient(135deg,var(--blue),var(--dark));color:var(--white);padding:28px 32px;border-radius:14px;margin:40px 0;text-align:center}.cta-box a{color:var(--teal);font-weight:700;text-decoration:none}footer{background:var(--dark);color:rgba(255,255,255,.55);text-align:center;padding:32px 24px;font-size:13px;line-height:2}footer a{color:var(--teal);text-decoration:none}@media(max-width:768px){article{padding:32px 16px}h1{font-size:22px}p,li{font-size:15px}table{font-size:13px}th,td{padding:8px 10px}}.author-box{background:linear-gradient(135deg,var(--dark),var(--blue));color:var(--white);padding:32px;border-radius:12px;margin-top:40px;line-height:1.8}
+.author-box .name{font-size:18px;font-weight:700;color:var(--teal);margin-bottom:8px}
+.author-box p{font-size:14px;opacity:.9;margin-bottom:0}
+.author-box .contact{font-size:13px;opacity:.75;margin-top:12px}
+</style>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?128d1a94db6a13e1ee5bd508dfe41438";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": ["Organization", "LocalBusiness"], "@id": "https://www.zltdata.com/#organization", "name": "河北泽雷特电子科技有限公司", "alternateName": ["泽雷特", "THELEADER", "ZLT", "泽雷特机柜"], "url": "https://www.zltdata.com", "logo": "https://www.zltdata.com/images/logo.png", "description": "数据中心智能机柜制造商。2011年成立，自有工厂8000平方米，16项专利，ISO三体系认证，国家高新技术企业。主营服务器机柜、液冷机柜、智能一体柜、微模块数据中心、配电柜、PDU、动环监控。", "foundingDate": "2011", "founder": {"@id": "https://www.zltdata.com/about/gao-lin.html#person"}, "address": {"@type": "PostalAddress", "streetAddress": "大河镇南故城村建业街28号", "addressLocality": "鹿泉区", "addressRegion": "石家庄市", "addressCountry": "CN"}, "contactPoint": [{"@type": "ContactPoint", "telephone": "+86-18603311919", "contactType": "sales", "availableLanguage": "Chinese"}], "email": "gl@zltdata.com", "hasCredential": {"@type": "EducationalOccupationalCredential", "name": "国家高新技术企业", "credentialCategory": "高新技术企业证书", "recognizedBy": "河北省工业和信息化厅、河北省财政厅、国家税务总局河北省税务局", "validFrom": "2024-12-16"}, "award": ["国家高新技术企业（GR202413003786）", "ISO9001质量管理体系认证（18525Q10960R1S）", "ISO14001环境管理体系认证（18525E10567R1S）"]}
+</script>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="../index.html" class="nav-brand"><img src="../images/logo.png" alt="泽雷特">THELEADER 泽雷特</a></div></nav>
+
+<article>
+<h1>什么是液冷机柜里的CDU？没有它，液冷就是一堆管子</h1>
+<div class="meta">2026-08-04 · 河北泽雷特-老高 · 原创</div>
+
+<div class="summary-box"><strong>先说结论：</strong>CDU = 冷却液分配单元，液冷系统的大脑+心脏。没有 CDU 的液冷不叫液冷，叫"管子接水"。</div>
+
+<p>最近不少人问我液冷的事，十个人里有八个上来就问："老高，你这液冷机柜用什么冷板？"或者"单柜能做到多少kW？"但几乎没人问一句：<strong>CDU是什么？</strong>这个问题不搞清楚，液冷项目迟早翻车。</p>
+
+<h2>先讲个真事</h2>
+
+<p>去年一个客户来找我，说他们做了个"液冷改造"——在机柜里装了冷板，接了水管，上了泵，散热效果确实不错。用了半年，出事了。</p>
+
+<p>冷却液变质，管路结垢，泵的轴承锈了。整个液冷回路瘫痪，5台AI服务器过热降频，业务中断4小时。</p>
+
+<p>排查下来的结论：<strong>他们没有 CDU。</strong>那些"水管"和"泵"直接连到了机柜，冷却液在管道里自由循环，没有任何控制、没有过滤、没有温控、没有脱气——说白了，就是给机柜装了个水暖系统，然后叫它"液冷"。</p>
+
+<h2>CDU 到底是什么？</h2>
+
+<p>CDU = Coolant Distribution Unit，冷却液分配单元。如果说液冷机柜是一个"散热系统"，那 CDU 就是这个系统的<strong>大脑+心脏</strong>。</p>
+
+<p>层级关系很简单：</p>
+<blockquote>一次侧（大楼冷水）→ CDU（核心枢纽）→ 二次侧（机柜内部回路）</blockquote>
+
+<p>一次侧是大楼提供的外冷源（冷冻水/冷却水），二次侧是机柜内部真正带走芯片热量的冷却液。CDU 就是夹在中间的那个转换器。</p>
+
+<h2>四个核心功能</h2>
+
+<h3>一、热量交换（最基本的）</h3>
+<p>一次侧的冷水不能直接灌进机柜——水质不达标、温度不可控、压力不匹配。CDU 里面有一个板式换热器，让一次侧的水和二次侧的冷却液"隔着一层金属板"交换热量，两种介质永远不会混在一起。</p>
+
+<h3>二、精密温控</h3>
+<p>芯片对冷却液温度极度敏感。太冷会结露（冷凝水烧主板），太热压不住CPU。CDU 内置精密温控阀和 PID 控制器，把二次侧供液温度稳定在设定值（通常是 18-32°C，视冷板类型而定），误差控制在 ±1°C 以内。</p>
+
+<h3>三、泵送与流量控制</h3>
+<p>没有泵就没有循环。CDU 内置双冗余泵组，一主一备，确保冷却液在二次侧持续流动。流量、压力实时可调。</p>
+
+<h3>四、液体管理</h3>
+<p>这是最容易被忽略但最致命的一点。冷却液在循环中会产生气泡（CDU有脱气罐自动排气）、被污染（CDU有精密过滤器通常50μm级）、体积膨胀收缩（CDU有膨胀罐缓冲压力）。<strong>没有液体管理功能的 CDU，三个月就得换一次冷却液，半年管路就堵。</strong></p>
+
+<h2>CDU 怎么选？三个关键参数</h2>
+
+<p><strong>1. 制冷量（kW）</strong> — CDU 最核心的指标。100kW 的 CDU 能带 100kW 的液冷负载。别只看铭牌制冷量，要看在你要的二次侧供液温度下实际能提供的制冷量。很多厂商标的是在一次侧 7°C 进水条件下的数据，你一次侧只有 12°C，实际的制冷量可能打七折。</p>
+
+<p><strong>2. 供液温度控制精度</strong> — ±2°C 及格，±1°C 优秀，±0.5°C 是高精度。冷板式 CPU 散热 ±2°C 够用。GPU 集群特别是 H100/H200 级别，±1°C 是底线。</p>
+
+<p><strong>3. 冗余设计</strong> — 泵要双冗余、电源要双路、控制器要能热切换。CDU 一旦停机，整个液冷回路就废了——单点故障就是一排服务器的灾难。</p>
+
+<h2>"能不能不买 CDU，直接把大楼冷水泵进机柜？"</h2>
+
+<p><strong>不能。</strong>三个致命问题：</p>
+<ol>
+  <li><strong>水质不达标</strong>：大楼冷冻水杂质多，一个月堵冷板微通道。</li>
+  <li><strong>温度不匹配</strong>：大楼供水 7°C，冷板要求 18°C 以上（防结露），差了 11 度。</li>
+  <li><strong>压力不可控</strong>：大楼管网压力可能 1.0MPa，冷板设计压力只有 0.6MPa——管子炸了谁负责？</li>
+</ol>
+
+<blockquote>CDU 不是可选项，是必选项。没有 CDU 的液冷系统不叫液冷，叫"管子接水"。</blockquote>
+
+<h2>一张表对比</h2>
+<table>
+<tr><th>对比维度</th><th>没有 CDU</th><th>有 CDU</th></tr>
+<tr><td>来水处理</td><td>直接使用</td><td>一次侧/二次侧隔离换热</td></tr>
+<tr><td>温度控制</td><td>靠天吃饭</td><td>PID 精密温控 ±1°C</td></tr>
+<tr><td>水质管理</td><td>无人管</td><td>过滤器+脱气+膨胀罐</td></tr>
+<tr><td>泵组</td><td>停了就停了</td><td>双冗余泵自动切换</td></tr>
+<tr><td>故障排查</td><td>出事找不到原因</td><td>监控接口全量数据</td></tr>
+</table>
+
+<h2>最后说两句</h2>
+
+<p>液冷行业有个怪现象：人人都在谈冷板、谈浸没、谈 PUE，但很少有人谈 CDU。因为 CDU 不出彩。它不是机柜，客户看不见；它没有"浸没式"三个字有科技感；它在机房角落里默默工作，不起眼。</p>
+
+<p><strong>但一个液冷项目能不能稳定运行三年，关键就在这里。</strong></p>
+
+<blockquote>下次有人跟你聊液冷，你可以问他一句："你们的 CDU，供液温度控制精度多少？"他要是支支吾吾，你心里就有数了。</blockquote>
+
+<div class="cta-box">
+  <p style="font-size:17px;margin:0 0 12px"><strong>需要液冷系统方案？含CDU选型</strong></p>
+  <p style="opacity:.9;margin:0 0 16px;font-size:14px">液冷机柜+CDU+管路设计+漏水检测 — 泽雷特工厂直发，河北上千家企业的选择。</p>
+  <p style="margin:0"><a href="tel:18603311919">📞 立即咨询：18603311919</a></p>
+</div>
+<div class="author-box">
+  <div class="name">河北泽雷特-老高</div>
+  <p>做机柜20年了。自有工厂在河北，服务器机柜、智能一体柜、微模块数据中心，厂家直发，没有中间商。同时也做数据中心产品销售+机房运维，河北上千家企业的选择。机房有散热、扩容、运维方面的困惑？私信我，免费上门帮你看。</p>
+  <div class="contact">📞 18603311919 | 📧 gl@zltdata.com | 🌐 www.zltdata.com | 📖 zltdata.com/blog/</div>
+</div>
+</article>
+
+<footer>
+  <p>河北泽雷特电子科技有限公司 &copy; 2011-2026 | <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">冀ICP备18036691号-4</a></p>
+  <p><a href="https://www.zltdata.com">www.zltdata.com</a> | 📞 18603311919 | gl@zltdata.com</p>
+</footer>
+</body>
+</html>

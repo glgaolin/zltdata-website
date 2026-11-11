@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>泽雷特 · 登录</title>
+<style>
+  :root {
+    --blue: #0D47A1; --cyan: #27C3C4; --dark: #142824;
+    --bg: #F4F6F8; --surface: #FFFFFF; --fg: #1A1A2E;
+    --muted: #6B7280; --border: #E5E7EB;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    background: linear-gradient(180deg, var(--blue) 0%, #081D45 60%, var(--bg) 60%);
+    color: var(--fg); max-width: 430px; margin: 0 auto; min-height: 100vh;
+    -webkit-font-smoothing: antialiased; display: flex; flex-direction: column;
+  }
+  /* Top Brand */
+  .brand-area { padding: 80px 24px 40px; text-align: center; color: #fff; }
+  .brand-area .logo { margin: 0 auto 16px; text-align: center; }
+  .brand-area .logo img { max-width: 180px; height: auto; }
+  .brand-area h1 { font-size: 26px; font-weight: 800; letter-spacing: 2px; }
+  .brand-area p { font-size: 13px; opacity: .7; margin-top: 4px; }
+  /* Login Card */
+  .login-card { background: var(--surface); border-radius: 20px 20px 0 0; padding: 32px 24px; flex: 1; box-shadow: 0 -4px 20px rgba(0,0,0,.06); }
+  .login-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 24px; text-align: center; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--fg); }
+  .form-group input { width: 100%; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 16px; font-family: inherit; background: var(--bg); }
+  .form-group input:focus { outline: none; border-color: var(--cyan); }
+  .row-inputs { display: flex; gap: 8px; }
+  .row-inputs input { flex: 1; }
+  .row-inputs button { padding: 0 20px; background: var(--cyan); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+  .btn-login { width: 100%; padding: 15px; background: var(--blue); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px; }
+  .btn-login:active { opacity: .9; }
+  .forgot-row { display: flex; justify-content: space-between; margin-top: 12px; font-size: 13px; }
+  .forgot-row a { color: var(--blue); text-decoration: none; }
+  .agreement { font-size: 12px; color: var(--muted); text-align: center; margin-top: 20px; line-height: 1.6; }
+  .agreement a { color: var(--blue); text-decoration: none; }
+</style>
+</head>
+<body>
+  <!-- Brand Area -->
+  <div class="brand-area">
+    <div class="logo"><img src="logo.png" alt="泽雷特" style="height:48px;vertical-align:middle"></div>
+    <h1>泽雷特运维</h1>
+    <p>ZLTData · 数据中心智能运维平台</p>
+  </div>
+
+  <!-- Login Card -->
+  <div class="login-card">
+    <h2>登录系统</h2>
+
+    <div class="form-group">
+      <label>手机号</label>
+      <input type="tel" placeholder="请输入手机号" value="18603311919" id="phoneInput" oninput="checkLogin()">
+    </div>
+
+    <div class="form-group">
+      <label>验证码（内测阶段可跳过）</label>
+      <div class="row-inputs">
+        <input type="text" placeholder="可不填" id="codeInput">
+        <button onclick="this.textContent='已发送';this.style.background='#999'">发送验证码</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>密码</label>
+      <input type="password" placeholder="请输入密码" id="pwdInput" oninput="checkLogin()" value="123456">
+    </div>
+
+    <button class="btn-login" id="loginBtn" onclick="location.href='screens_ios-dashboard.html'">登 录</button>
+
+    <div class="forgot-row">
+      <a href="#">忘记密码</a>
+      <a href="#">注册账号</a>
+      <span>微信登录</span>
+    </div>
+
+    <div class="agreement">
+      登录即表示同意 <a href="#">《用户协议》</a> 和 <a href="#">《隐私政策》</a>
+    </div>
+  </div>
+</body>
+</html>

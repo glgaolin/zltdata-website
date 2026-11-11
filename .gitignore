@@ -1,0 +1,13 @@
+﻿# Binary large files
+*.pdf
+*.mp4
+webp/*
+cert/*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

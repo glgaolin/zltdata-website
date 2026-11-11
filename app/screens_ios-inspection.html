@@ -1,0 +1,189 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>泽雷特 · 设备巡检</title>
+<style>
+  :root {
+    --blue: #0D47A1; --cyan: #27C3C4; --dark: #142824;
+    --bg: #F4F6F8; --surface: #FFFFFF; --fg: #1A1A2E;
+    --muted: #6B7280; --border: #E5E7EB;
+    --danger: #E53935; --warning: #FB8C00; --success: #43A047;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    background: var(--bg); color: var(--fg);
+    max-width: 430px; margin: 0 auto; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .status-bar { display: flex; justify-content: space-between; padding: 14px 24px 8px; font-size: 12px; font-weight: 600; background: var(--blue); color: #fff; }
+  .nav-bar { display: flex; align-items: center; gap: 12px; padding: 12px 24px 16px; background: var(--blue); color: #fff; border-radius: 0 0 20px 20px; }
+  .nav-bar .back { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.15); border: none; color: #fff; font-size: 18px; display: grid; place-items: center; cursor: pointer; }
+  .nav-bar h1 { font-size: 18px; font-weight: 700; }
+  /* Progress Banner */
+  .progress-banner { margin: -10px 24px 0; background: var(--surface); border-radius: var(--radius); padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+  .progress-bar-bg { height: 8px; background: var(--border); border-radius: 4px; margin-top: 8px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 4px; width: 62%; transition: width .3s; }
+  .progress-info { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  /* Plan Cards */
+  .section { padding: 16px 24px 0; }
+  .section-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .plan-card { background: var(--surface); border-radius: var(--radius); padding: 16px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .plan-card .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .plan-card h3 { font-size: 15px; font-weight: 700; }
+  .plan-card .status { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .status.ongoing { background: #FFF3E0; color: var(--warning); }
+  .status.done { background: #E8F5E9; color: var(--success); }
+  .status.pending { background: #F5F5F5; color: var(--muted); }
+  .plan-card .meta { font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .plan-card .meta strong { color: var(--fg); }
+  /* Checklist Items */
+  .checklist { margin-top: 10px; }
+  .check-item { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+  .check-item:last-child { border-bottom: none; }
+  .check-box { width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 6px; display: grid; place-items: center; flex-shrink: 0; transition: all .2s; }
+  .check-item.done .check-box { background: var(--success); border-color: var(--success); color: #fff; font-size: 14px; }
+  .check-item .label { font-size: 14px; flex: 1; }
+  .check-item.done .label { color: var(--muted); text-decoration: line-through; }
+  /* Photo Upload */
+  .photo-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #E3F2FD; border: 1.5px dashed var(--blue); border-radius: var(--radius-sm); font-size: 13px; color: var(--blue); font-weight: 600; cursor: pointer; margin-top: 8px; }
+  .photo-btn:active { background: #BBDEFB; }
+  /* FAB */
+  .fab { position: fixed; bottom: 100px; right: calc(50% - 215px + 24px); width: 56px; height: 56px; border-radius: 50%; background: var(--cyan); color: #fff; border: none; font-size: 28px; box-shadow: 0 4px 16px rgba(39,195,196,.4); cursor: pointer; display: grid; place-items: center; z-index: 50; }
+  /* Tab Bar */
+  .tab-bar { position: sticky; bottom: 0; display: flex; justify-content: space-around; background: var(--surface); border-top: 1px solid var(--border); padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0)); max-width: 430px; margin: 0 auto; }
+  .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; color: var(--muted); border: none; background: none; cursor: pointer; padding: 4px 12px; }
+  .tab-item.active { color: var(--blue); }
+  .tab-icon { font-size: 22px; }
+</style>
+</head>
+<body>
+  <div class="status-bar"><span>9:41</span><span style="display:flex;gap:6px">●●●●○</span></div>
+  <div class="nav-bar">
+    <button class="back" onclick="history.back()">←</button>
+    <h1>设备巡检</h1>
+    <span style="margin-left:auto">📅</span>
+  </div>
+
+  <!-- Progress Banner -->
+  <div class="progress-banner">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <span style="font-weight:700;font-size:15px">今日巡检进度</span>
+      <span style="font-size:22px;font-weight:800;font-variant-numeric:tabular-nums">8/13</span>
+    </div>
+    <div class="progress-bar-bg"><div class="progress-bar-fill"></div></div>
+    <div class="progress-info"><span>已完成 8 项</span><span>剩余 5 项</span></div>
+  </div>
+
+  <!-- Active Plans -->
+  <div class="section">
+    <div class="section-title">进行中的巡检</div>
+
+    <div class="plan-card">
+      <div class="header">
+        <h3>A区精密空调季度巡检</h3>
+        <span class="status ongoing">进行中</span>
+      </div>
+      <div class="meta">
+        <div><strong>负责人：</strong>张工</div>
+        <div><strong>时间：</strong>2026-08-05 09:00 - 17:00</div>
+        <div><strong>区域：</strong>A区空调组（4台精密空调）</div>
+      </div>
+      <div class="checklist">
+        <div class="check-item done" onclick="this.classList.toggle('done')">
+          <div class="check-box">✓</div>
+          <span class="label">检查空调运行状态指示灯</span>
+        </div>
+        <div class="check-item done" onclick="this.classList.toggle('done')">
+          <div class="check-box">✓</div>
+          <span class="label">测量送/回风温度并记录</span>
+        </div>
+        <div class="check-item done" onclick="this.classList.toggle('done')">
+          <div class="check-box">✓</div>
+          <span class="label">检查过滤网是否需要更换</span>
+        </div>
+        <div class="check-item" onclick="this.classList.toggle('done')">
+          <div class="check-box"></div>
+          <span class="label">检测制冷剂管路压力</span>
+        </div>
+        <div class="check-item" onclick="this.classList.toggle('done')">
+          <div class="check-box"></div>
+          <span class="label">检查加湿罐工作状态</span>
+        </div>
+      </div>
+      <button class="photo-btn">📷 拍照记录</button>
+    </div>
+
+    <div class="plan-card">
+      <div class="header">
+        <h3>配电系统月度巡检</h3>
+        <span class="status ongoing">进行中</span>
+      </div>
+      <div class="meta">
+        <div><strong>负责人：</strong>李工</div>
+        <div><strong>时间：</strong>2026-08-05 08:30 - 12:00</div>
+        <div><strong>区域：</strong>配电间A/B/C</div>
+      </div>
+      <div class="checklist">
+        <div class="check-item done" onclick="this.classList.toggle('done')">
+          <div class="check-box">✓</div>
+          <span class="label">检查UPS运行参数</span>
+        </div>
+        <div class="check-item done" onclick="this.classList.toggle('done')">
+          <div class="check-box">✓</div>
+          <span class="label">测量电池组电压</span>
+        </div>
+        <div class="check-item" onclick="this.classList.toggle('done')">
+          <div class="check-box"></div>
+          <span class="label">检查配电柜接线端子</span>
+        </div>
+        <div class="check-item" onclick="this.classList.toggle('done')">
+          <div class="check-box"></div>
+          <span class="label">测量各回路电流</span>
+        </div>
+      </div>
+      <button class="photo-btn">📷 拍照记录</button>
+    </div>
+  </div>
+
+  <!-- Upcoming Plans -->
+  <div class="section">
+    <div class="section-title">待执行巡检</div>
+    <div class="plan-card">
+      <div class="header">
+        <h3>机柜温场季度巡检</h3>
+        <span class="status pending">待开始</span>
+      </div>
+      <div class="meta">
+        <div><strong>计划时间：</strong>2026-08-06 全天</div>
+        <div><strong>范围：</strong>A1-A3区所有服务器机柜（146台）</div>
+      </div>
+    </div>
+    <div class="plan-card">
+      <div class="header">
+        <h3>消防与安防月度检查</h3>
+        <span class="status pending">待开始</span>
+      </div>
+      <div class="meta">
+        <div><strong>计划时间：</strong>2026-08-07 09:00</div>
+        <div><strong>范围：</strong>全机房烟感探测器、灭火器、门禁系统</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB -->
+  <button class="fab" title="新建巡检">+</button>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-item" onclick="location.href='screens_ios-dashboard.html'"><span class="tab-icon">🏠</span> 首页</button>
+    <button class="tab-item" onclick="location.href='screens_ios-alarms.html'"><span class="tab-icon">🔔</span> 告警</button>
+    <button class="tab-item" onclick="location.href='screens_ios-tickets.html'"><span class="tab-icon">📋</span> 工单</button>
+    <button class="tab-item active" onclick="location.href='screens_ios-inspection.html'"><span class="tab-icon">🔍</span> 巡检</button>
+    <button class="tab-item" onclick="location.href='screens_ios-profile.html'"><span class="tab-icon">👤</span> 我的</button>
+  </nav>
+</body>
+</html>

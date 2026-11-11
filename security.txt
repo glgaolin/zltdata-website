@@ -1,0 +1,7 @@
+﻿Contact: mailto:gl@zltdata.com
+Contact: tel:+86-18603311919
+Expires: 2027-12-31T23:59:59.000Z
+Encryption: https://www.zltdata.com/.well-known/pgp-key.txt
+Preferred-Languages: zh-CN, en
+Policy: https://www.zltdata.com/security
+Canonical: https://www.zltdata.com/.well-known/security.txt

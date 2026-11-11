@@ -1,0 +1,147 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>泽雷特 · 我的</title>
+<style>
+  :root {
+    --blue: #0D47A1; --cyan: #27C3C4; --dark: #142824;
+    --bg: #F4F6F8; --surface: #FFFFFF; --fg: #1A1A2E;
+    --muted: #6B7280; --border: #E5E7EB;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    background: var(--bg); color: var(--fg);
+    max-width: 430px; margin: 0 auto; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .status-bar { display: flex; justify-content: space-between; padding: 14px 24px 8px; font-size: 12px; font-weight: 600; background: var(--blue); color: #fff; }
+  /* Profile Header */
+  .profile-header { background: linear-gradient(135deg, var(--blue), #0A3880); padding: 24px 24px 40px; color: #fff; border-radius: 0 0 24px 24px; display: flex; align-items: center; gap: 16px; }
+  .avatar-lg { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,.2); display: grid; place-items: center; font-size: 32px; flex-shrink: 0; }
+  .profile-info h2 { font-size: 20px; font-weight: 700; }
+  .profile-info .role { font-size: 13px; opacity: .8; margin-top: 2px; }
+  .profile-info .company { font-size: 12px; opacity: .6; }
+  /* Stats Row */
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: -20px 24px 0; }
+  .stat-box { background: var(--surface); border-radius: var(--radius); padding: 14px 8px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+  .stat-box .num { font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .stat-box .lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  /* Menu List */
+  .menu-section { padding: 20px 24px 0; }
+  .menu-group { background: var(--surface); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  .menu-item { display: flex; align-items: center; gap: 12px; padding: 16px; border-bottom: 1px solid var(--border); cursor: pointer; border: none; background: none; width: 100%; font-family: inherit; font-size: 14px; color: var(--fg); text-align: left; }
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item .mi-icon { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-size: 18px; flex-shrink: 0; }
+  .menu-item .mi-text { flex: 1; font-weight: 600; }
+  .menu-item .mi-arrow { color: var(--muted); font-size: 14px; }
+  .menu-item .mi-badge { background: var(--danger); color: #fff; border-radius: 10px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
+  /* Logout */
+  .logout-btn { display: block; width: calc(100% - 48px); margin: 24px auto; padding: 14px; background: var(--surface); border: 1.5px solid var(--danger); color: var(--danger); border-radius: var(--radius-sm); font-size: 15px; font-weight: 700; cursor: pointer; text-align: center; }
+  /* Tab Bar */
+  .tab-bar { position: sticky; bottom: 0; display: flex; justify-content: space-around; background: var(--surface); border-top: 1px solid var(--border); padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0)); max-width: 430px; margin: 0 auto; }
+  .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; color: var(--muted); border: none; background: none; cursor: pointer; padding: 4px 12px; }
+  .tab-item.active { color: var(--blue); }
+  .tab-icon { font-size: 22px; }
+</style>
+</head>
+<body>
+  <div class="status-bar"><span>9:41</span><span style="display:flex;gap:6px">●●●●○</span></div>
+
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="avatar-lg">👤</div>
+    <div class="profile-info">
+      <h2>张建国</h2>
+      <div class="role">运维工程师</div>
+      <div class="company">香河数据中心</div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-box"><div class="num" style="color:#0D47A1">146</div><div class="lbl">我的设备</div></div>
+    <div class="stat-box"><div class="num" style="color:#E53935">3</div><div class="lbl">待处理告警</div></div>
+    <div class="stat-box"><div class="num" style="color:#FB8C00">5</div><div class="lbl">进行中工单</div></div>
+    <div class="stat-box"><div class="num" style="color:#43A047">128</div><div class="lbl">完成工单</div></div>
+  </div>
+
+  <!-- Menu Sections -->
+  <div class="menu-section">
+    <div class="menu-group">
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#E3F2FD">🔔</div>
+        <span class="mi-text">我的告警</span>
+        <span class="mi-badge">3</span>
+        <span class="mi-arrow">›</span>
+      </button>
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#E8F5E9">📋</div>
+        <span class="mi-text">我的工单</span>
+        <span class="mi-arrow">›</span>
+      </button>
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#FFF3E0">🔍</div>
+        <span class="mi-text">我的巡检</span>
+        <span class="mi-arrow">›</span>
+      </button>
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#F3E5F5">📦</div>
+        <span class="mi-text">我的询价</span>
+        <span class="mi-badge">新</span>
+        <span class="mi-arrow">›</span>
+      </button>
+    </div>
+
+    <div class="menu-group">
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#E0F7FA">🏭</div>
+        <span class="mi-text">机房管理</span>
+        <span class="mi-arrow">›</span>
+      </button>
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#EFEBE9">⚙️</div>
+        <span class="mi-text">设备列表</span>
+        <span class="mi-arrow">›</span>
+      </button>
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#E8EAF6">📊</div>
+        <span class="mi-text">数据报表</span>
+        <span class="mi-arrow">›</span>
+      </button>
+    </div>
+
+    <div class="menu-group">
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#F5F5F5">🔧</div>
+        <span class="mi-text">设置</span>
+        <span class="mi-arrow">›</span>
+      </button>
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#F5F5F5">💬</div>
+        <span class="mi-text">帮助与反馈</span>
+        <span class="mi-arrow">›</span>
+      </button>
+      <button class="menu-item">
+        <div class="mi-icon" style="background:#F5F5F5">ℹ️</div>
+        <span class="mi-text">关于</span>
+        <span class="mi-arrow">›</span>
+      </button>
+    </div>
+  </div>
+
+  <button class="logout-btn" onclick="location.href='screens_ios-login.html'">退出登录</button>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-item" onclick="location.href='screens_ios-dashboard.html'"><span class="tab-icon">🏠</span> 首页</button>
+    <button class="tab-item" onclick="location.href='screens_ios-alarms.html'"><span class="tab-icon">🔔</span> 告警</button>
+    <button class="tab-item" onclick="location.href='screens_ios-tickets.html'"><span class="tab-icon">📋</span> 工单</button>
+    <button class="tab-item" onclick="location.href='screens_ios-products.html'"><span class="tab-icon">📦</span> 产品</button>
+    <button class="tab-item active" onclick="location.href='screens_ios-profile.html'"><span class="tab-icon">👤</span> 我的</button>
+  </nav>
+</body>
+</html>

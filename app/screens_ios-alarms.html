@@ -1,0 +1,176 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>泽雷特 · 告警中心</title>
+<style>
+  :root {
+    --blue: #0D47A1; --cyan: #27C3C4; --dark: #142824;
+    --bg: #F4F6F8; --surface: #FFFFFF; --fg: #1A1A2E;
+    --muted: #6B7280; --border: #E5E7EB;
+    --danger: #E53935; --warning: #FB8C00; --success: #43A047; --info: #1E88E5;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    background: var(--bg); color: var(--fg);
+    max-width: 430px; margin: 0 auto; min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .status-bar { display: flex; justify-content: space-between; padding: 14px 24px 8px; font-size: 12px; font-weight: 600; background: var(--blue); color: #fff; }
+  .nav-bar { display: flex; align-items: center; gap: 12px; padding: 12px 24px 16px; background: var(--blue); color: #fff; border-radius: 0 0 20px 20px; }
+  .nav-bar .back { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.15); border: none; color: #fff; font-size: 18px; display: grid; place-items: center; cursor: pointer; }
+  .nav-bar h1 { font-size: 18px; font-weight: 700; }
+  /* Filter Tabs */
+  .filter-tabs { display: flex; gap: 8px; padding: 16px 24px; overflow-x: auto; }
+  .filter-tab { padding: 8px 18px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--surface); font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+  .filter-tab.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .filter-tab .badge { display: inline-block; background: rgba(0,0,0,.1); border-radius: 10px; padding: 1px 7px; font-size: 11px; margin-left: 4px; }
+  .filter-tab.active .badge { background: rgba(255,255,255,.2); }
+  .filter-tab.danger.active { background: var(--danger); border-color: var(--danger); }
+  /* Alarm Cards */
+  .alarm-list { padding: 0 24px 20px; }
+  .alarm-card { background: var(--surface); border-radius: var(--radius); padding: 16px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.04); border-left: 4px solid transparent; }
+  .alarm-card.severe { border-left-color: var(--danger); }
+  .alarm-card.warn { border-left-color: var(--warning); }
+  .alarm-card.notice { border-left-color: var(--info); }
+  .alarm-card .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .alarm-card .level-tag { padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+  .level-tag.severe { background: #FFEBEE; color: var(--danger); }
+  .level-tag.warn { background: #FFF3E0; color: var(--warning); }
+  .level-tag.notice { background: #E3F2FD; color: var(--info); }
+  .alarm-card .time { font-size: 11px; color: var(--muted); }
+  .alarm-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .alarm-card .desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+  .alarm-card .footer { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); }
+  .alarm-card .footer button { padding: 6px 16px; border-radius: 20px; border: none; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .btn-handle { background: var(--blue); color: #fff; }
+  .btn-ack { background: var(--border); color: var(--fg); }
+  /* Tab Bar */
+  .tab-bar { position: sticky; bottom: 0; display: flex; justify-content: space-around; background: var(--surface); border-top: 1px solid var(--border); padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0)); max-width: 430px; margin: 0 auto; }
+  .tab-item { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; color: var(--muted); border: none; background: none; cursor: pointer; padding: 4px 12px; }
+  .tab-item.active { color: var(--blue); }
+  .tab-icon { font-size: 22px; }
+  /* Detail Modal (simplified inline) */
+  .detail-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 100; justify-content: flex-end; }
+  .detail-sheet { background: var(--surface); border-radius: 20px 20px 0 0; padding: 24px; max-height: 75vh; overflow-y: auto; }
+  .detail-sheet .handle { width: 40px; height: 4px; background: var(--border); border-radius: 2px; margin: 0 auto 16px; }
+  .detail-sheet .close { float: right; width: 32px; height: 32px; border-radius: 50%; background: var(--bg); border: none; font-size: 16px; cursor: pointer; display: grid; place-items: center; }
+</style>
+</head>
+<body>
+  <div class="status-bar"><span>9:41</span><span style="display:flex;gap:6px">●●●●○</span></div>
+  <div class="nav-bar">
+    <button class="back" onclick="history.back()">←</button>
+    <h1>告警中心</h1>
+    <span style="margin-left:auto"><span style="font-size:28px;">🔕</span></span>
+  </div>
+
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+    <button class="filter-tab active">全部<span class="badge">22</span></button>
+    <button class="filter-tab danger">严重<span class="badge">3</span></button>
+    <button class="filter-tab">警告<span class="badge">7</span></button>
+    <button class="filter-tab">提示<span class="badge">12</span></button>
+    <button class="filter-tab">已处理</button>
+  </div>
+
+  <!-- Alarm List -->
+  <div class="alarm-list">
+    <div class="alarm-card severe">
+      <div class="top">
+        <span class="level-tag severe">严重</span>
+        <span class="time">10分钟前</span>
+      </div>
+      <h3>A3机柜温度过高</h3>
+      <div class="desc">当前温度 38.5°C，超过安全阈值 35°C。可能原因：空调送风不足或设备负载过高。</div>
+      <div class="footer">
+        <span>📍 A3-12号柜 · 🖥️ DELL R740xd</span>
+        <button class="btn-handle">处理</button>
+      </div>
+    </div>
+
+    <div class="alarm-card severe">
+      <div class="top">
+        <span class="level-tag severe">严重</span>
+        <span class="time">22分钟前</span>
+      </div>
+      <h3>B区精密空调停机</h3>
+      <div class="desc">2号精密空调（Liebert PEX4）已停止运行，B区温度正在上升。</div>
+      <div class="footer">
+        <span>📍 B区空调间 · 🏭 Liebert PEX4</span>
+        <button class="btn-handle">处理</button>
+      </div>
+    </div>
+
+    <div class="alarm-card warn">
+      <div class="top">
+        <span class="level-tag warn">警告</span>
+        <span class="time">28分钟前</span>
+      </div>
+      <h3>UPS电池电压偏低</h3>
+      <div class="desc">2号UPS电池组电压 192V，低于正常工作范围 210-230V。建议尽快检查。</div>
+      <div class="footer">
+        <span>📍 配电间B · 🔋 2号UPS</span>
+        <button class="btn-ack">确认</button>
+      </div>
+    </div>
+
+    <div class="alarm-card warn">
+      <div class="top">
+        <span class="level-tag warn">警告</span>
+        <span class="time">45分钟前</span>
+      </div>
+      <h3>湿度传感器数据异常</h3>
+      <div class="desc">C区湿度传感器读数 72%RH，超过上限 65%RH。注意结露风险。</div>
+      <div class="footer">
+        <span>📍 C区-03位 · 📡 TH-2306</span>
+        <button class="btn-ack">确认</button>
+      </div>
+    </div>
+
+    <div class="alarm-card notice">
+      <div class="top">
+        <span class="level-tag notice">提示</span>
+        <span class="time">1小时前</span>
+      </div>
+      <h3>巡检任务到期提醒</h3>
+      <div class="desc">A区精密空调季度巡检计划今日截止，当前完成率 75%。</div>
+      <div class="footer">
+        <span>📋 巡检计划 #Q3-AC-001</span>
+        <button class="btn-ack">已读</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <button class="tab-item" onclick="location.href='screens_ios-dashboard.html'"><span class="tab-icon">🏠</span> 首页</button>
+    <button class="tab-item active" onclick="location.href='screens_ios-alarms.html'"><span class="tab-icon">🔔</span> 告警</button>
+    <button class="tab-item" onclick="location.href='screens_ios-tickets.html'"><span class="tab-icon">📋</span> 工单</button>
+    <button class="tab-item" onclick="location.href='screens_ios-products.html'"><span class="tab-icon">📦</span> 产品</button>
+    <button class="tab-item" onclick="location.href='screens_ios-profile.html'"><span class="tab-icon">👤</span> 我的</button>
+  </nav>
+
+  <script>
+    // Filter tab switching with actual filtering
+    var filterMap = { '全部': 'all', '严重': 'severe', '警告': 'warn', '提示': 'notice', '已处理': 'done' };
+    document.querySelectorAll('.filter-tab').forEach(function(t) {
+      t.addEventListener('click', function() {
+        this.parentElement.querySelectorAll('.filter-tab').forEach(function(s) { s.classList.remove('active'); });
+        this.classList.add('active');
+        var label = this.textContent.replace(/[0-9]/g, '').trim();
+        var type = filterMap[label] || 'all';
+        document.querySelectorAll('.alarm-card').forEach(function(card) {
+          if (type === 'all') { card.style.display = ''; }
+          else if (type === 'done') { card.style.display = 'none'; }
+          else { card.style.display = card.classList.contains(type) ? '' : 'none'; }
+        });
+        if (type === 'done') { alert('已处理的告警暂无记录。\n系统将在此标签下显示近30天已关闭的告警。'); }
+      });
+    });
+  </script>
+</body>
+</html>

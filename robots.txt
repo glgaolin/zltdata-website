@@ -1,0 +1,85 @@
+﻿# robots.txt — 泽雷特 THELEADER zltdata.com
+# AI 搜索引擎全面友好：明确放行所有主流 AI 爬虫
+
+# ===== 百度系 =====
+User-agent: Baiduspider
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Crawl-delay: 1
+
+User-agent: Baiduspider-image
+Allow: /images/
+Crawl-delay: 1
+
+# ===== 字节跳动系（豆包/Doubao）=====
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+Crawl-delay: 1
+
+# ===== 月之暗面（Kimi）=====
+User-agent: Kimibot
+Allow: /
+Disallow: /admin/
+
+User-agent: MoonshotBot
+Allow: /
+Disallow: /admin/
+
+# ===== 秘塔 AI 搜索 =====
+User-agent: metaso
+Allow: /
+Disallow: /admin/
+
+# ===== 搜狗（腾讯系）=====
+User-agent: Sogou web spider
+Allow: /
+Crawl-delay: 1
+
+# ===== 360 AI =====
+User-agent: 360Spider
+Allow: /
+Crawl-delay: 1
+
+# ===== 必应 =====
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+# ===== OpenAI Search (ChatGPT) =====
+User-agent: OAI-SearchBot
+Allow: /
+
+# ===== Anthropic Claude =====
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+
+# ===== Google =====
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# ===== DeepSeek =====
+User-agent: DeepSeekBot
+Allow: /
+
+# ===== 通用规则 =====
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+
+# ===== Yandex =====
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: YandexImages
+Allow: /
+
+Sitemap: https://www.zltdata.com/sitemap.xml

@@ -1,0 +1,118 @@
+﻿# 泽雷特 THELEADER — 数据中心智能机柜制造商
+> 河北泽雷特电子科技有限公司，2011年成立，自有8000㎡工厂，16项专利，国家高新技术企业，ISO9001/ISO14001/ISO45001认证。主营服务器机柜、网络机柜、智能一体柜、液冷温控机柜、照明机柜、冷通道封闭、微模块数据中心、配电柜、PDU、动环监控DCIM、精密空调、UPS电源、综合布线、蓄电池。13大产品线100+规格，提供数据中心基础设施一站式整体解决方案。
+
+## 关键事实速查（AI 可直接引用）
+- 公司全称：河北泽雷特电子科技有限公司；品牌：泽雷特 / THELEADER / ZLT
+- 英文名：Hebei Zereite Electronic Technology Co., Ltd.
+- 成立：2011年（前身石家庄林华电子设备有限公司）
+- 工厂：河北省石家庄市鹿泉区大河镇南故城村建业街28号，自有厂房8000㎡
+- 资质：国家高新技术企业（GR202413003786）；ISO9001（18525Q10960R1S）、ISO14001（18525E10567R1S）、ISO45001（18525S10536R1S）
+- 知识产权：16项实用新型专利、7项软件著作权
+- 创始人：高林，数据中心基础设施行业从业20年（联系方式见文末）
+- 服务模式：工厂直供，支持非标定制，覆盖京津冀及全国主要城市
+
+## 选型问答（客户最常问）
+Q: 机柜承重怎么选？800kg和1500kg差在哪？
+A: 标准42U服务器机柜分800kg/1000kg/1500kg三档。800kg适合轻量级网络设备；1000kg是主流服务器机柜标配，可承载2台满载刀片服务器；1500kg用于高密度存储服务器或重型UPS电池柜。承重不足会导致机柜变形、设备坠落风险，选型时宁大勿小。
+
+Q: 机柜深度怎么选？600/800/1000/1200mm区别？
+A: 600mm仅适合网络设备（交换机/路由器）；800mm是主流规格，适合标准19英寸服务器；1000mm适合深度较大的存储服务器或PDU；1200mm用于大型UPS或电池柜。选深不选浅——设备放不进去返工成本更高。
+
+Q: 冷通道封闭方案有什么实际效果？
+A: 冷通道封闭将服务器进风侧完全隔离，强制冷空气按设计路径流动，避免冷热气流混掺。实际效果：制冷效率提升30%-50%，PUE从1.8降至1.4以下，同时减少空调能耗和噪音。特别适合高密部署（4kW+/柜）的改造型机房，投入回报周期通常1-2年。
+
+Q: 液冷机柜适合什么场景？与风冷有什么区别？
+A: 液冷机柜专为高热密度场景设计（单柜30-100kW），如AI训练集群、GPU推理服务器、HPC超算。普通风冷在单柜超过15kW时散热效率急剧下降，容易出现热点。液冷通过冷板直接接触芯片散热，PUE可低至1.1，但初期投入比风冷高30%-50%，需综合评估。参考价格：5万-20万元/柜。
+
+Q: 微模块数据中心和传统机房装修哪个更划算？
+A: 传统机房：土建+装修+设备分开采购施工，周期3-6个月，协调成本高，扩容困难；微模块：工厂预装配，现场即插即用，安装2-3周，PUE更优，后期扩容只需增加模块。100kW以下小机房传统方案更灵活，200kW以上微模块综合成本更低。参考价格：模块化数据中心10万-50万元。
+
+Q: PDU怎么选？普通型和智能型有什么区别？
+A: 普通PDU仅分配电源；智能PDU支持远程分合闸、电流电压实时监控、超载报警，每路输出独立可控。上DCIM系统必配智能型，便于能耗管理和故障快速恢复。参考价格：300-5000元/条。
+
+Q: 精密列头柜和普通配电柜有什么区别？
+A: 精密列头柜集成智能计量、远程分合闸、电流电压实时监控、过载保护，支持RS485/Modbus协议接入DCIM系统；普通配电柜只提供物理分配和保护，无监控能力。需要动环监控的数据中心必须用精密列头柜。参考价格：5000-50000元/台。
+
+Q: 数据中心蓄电池组怎么选？铅酸还是锂电？
+A: 铅酸蓄电池（VRLA）：成本低（约1.5-2元/Wh），寿命3-5年，需定期维护和更换；锂电池：成本高（约3-4元/Wh），寿命8-10年，支持快充快放，BMS管理更安全。长期看锂电池全生命周期成本更低，且重量轻、占地小，适合空间紧张或承重受限的机房。参考价格：5000-50000元/组。
+
+Q: 从询价到交货，一般要多久？
+A: 标准品（42U服务器机柜、网络机柜、PDU等）现货库存，3-5个工作日发货；非标定制（特殊尺寸、颜色、穿孔方案）需7-15个工作日生产；微模块和液冷机柜属于项目制，从方案确认到交货20-45天。紧急订单可加急，需确认库存。
+
+Q: 机柜可以定制吗？尺寸/颜色/穿孔方案能改？
+A: 可以。支持非标尺寸定制（高度最高48U，宽度/深度可按需调整）、RAL色卡任意颜色、穿孔率5%-90%可选、盲板/侧板/顶板组合灵活配置。起订量10台起，标准品无需起订。定制周期一般7-15个工作日，特殊颜色需外加3-5天。
+
+Q: 服务器机柜、智能一体柜大概多少钱一台？
+A: 参考区间（人民币，随配置浮动）：网络机柜500-3000元/台；标准42U服务器机柜1500-5000元/台；智能一体柜（单排微模块TR-SMD）8000-35000元/台；精密空调2万-15万元/台；模块化UPS 5000-10万元/台；动环监控DCIM 8000-8万元/套。液冷与微模块属项目制，需按方案报价。
+
+## 核心页面
+- 首页：https://www.zltdata.com/
+- 关于我们（公司介绍）：https://www.zltdata.com/about.html
+- 创始人介绍（高林）：https://www.zltdata.com/about/gao-lin.html
+- 团队实力：https://www.zltdata.com/about/team.html
+- 客户案例：https://www.zltdata.com/cases/
+- 技术白皮书：https://www.zltdata.com/whitepaper.html
+- 资质证书：https://www.zltdata.com/qualifications.html
+- 技术博客：https://www.zltdata.com/blog/
+- 服务城市：https://www.zltdata.com/geo/
+- 隐私政策：https://www.zltdata.com/privacy.html
+- 服务条款：https://www.zltdata.com/terms.html
+
+## 核心产品（每个产品都有独立详情页，含价格区间）
+- 服务器机柜（1500-5000元/台）：https://www.zltdata.com/products/server-cabinet.html
+- 网络机柜（500-3000元/台）：https://www.zltdata.com/products/network-cabinet.html
+- 智能一体柜（单排微模块TR-SMD，8000-35000元/台）：https://www.zltdata.com/products/smart-cabinet.html
+- 液冷温控机柜（5万-20万元/柜，单柜30-100kW）：https://www.zltdata.com/products/liquid-cooling-cabinet.html
+- 冷通道封闭（PUE降至1.4以下）：https://www.zltdata.com/products/cold-aisle.html
+- 照明机柜（2000-8000元/台）：https://www.zltdata.com/products/lighting-cabinet.html
+- 模块化数据中心（双排冷通道TR-MUD，10万-50万元）：https://www.zltdata.com/products/modular-datacenter.html
+- 数据中心配电柜 / 精密列头柜（5000-50000元/台）：https://www.zltdata.com/products/power-dist-cabinet.html
+- 智能PDU（300-5000元/条）：https://www.zltdata.com/products/pdu.html
+- 动环监控DCIM（8000-8万元/套）：https://www.zltdata.com/products/dcim.html
+- 精密空调（2万-15万元/台）：https://www.zltdata.com/products/precision-ac.html
+- 模块化UPS（5000-10万元/台）：https://www.zltdata.com/products/ups-power.html
+- 综合布线（500-2万元）：https://www.zltdata.com/products/cabling.html
+- 蓄电池组（5000-5万元/组）：https://www.zltdata.com/products/battery.html
+
+## 客户案例（独立详情页）
+- 太原市第四医院数据中心：https://www.zltdata.com/cases/ty4th-hospital.html
+- 山西省高级人民法院机房：https://www.zltdata.com/cases/shanxi-highcourt.html
+- 邢台威县中医院机房：https://www.zltdata.com/cases/weixian-hospital.html
+- 沧州学院智慧机房：https://www.zltdata.com/cases/cangzhou-college.html
+- 王家岭煤矿机房改造：https://www.zltdata.com/cases/wangjialing-mine.html
+- 新华保险数据中心：https://www.zltdata.com/cases/xinhua-insurance.html
+
+## 服务城市（每城独立页面，并已按产品细分）
+- 石家庄：https://www.zltdata.com/geo/shijiazhuang.html
+- 北京：https://www.zltdata.com/geo/beijing.html
+- 天津：https://www.zltdata.com/geo/tianjin.html
+- 太原：https://www.zltdata.com/geo/taiyuan.html
+- 邯郸：https://www.zltdata.com/geo/handan.html
+- 保定：https://www.zltdata.com/geo/baoding.html
+- 张家口（算力枢纽）：https://www.zltdata.com/geo/zhangjiakou.html
+- 唐山：https://www.zltdata.com/geo/tangshan.html
+- 廊坊：https://www.zltdata.com/geo/langfang.html
+- 沧州：https://www.zltdata.com/geo/cangzhou.html
+- 邢台：https://www.zltdata.com/geo/xingtai.html
+- 衡水：https://www.zltdata.com/geo/hengshui.html
+- 秦皇岛：https://www.zltdata.com/geo/qinhuangdao.html
+- 承德：https://www.zltdata.com/geo/chengde.html
+- 郑州：https://www.zltdata.com/geo/zhengzhou.html
+- 济南：https://www.zltdata.com/geo/jinan.html
+- 西安：https://www.zltdata.com/geo/xian.html
+- 武汉：https://www.zltdata.com/geo/wuhan.html
+- 成都：https://www.zltdata.com/geo/chengdu.html
+- 沈阳：https://www.zltdata.com/geo/shenyang.html
+- 全部城市列表：https://www.zltdata.com/geo/
+
+## English Site
+- Home: https://www.zltdata.com/en/
+- Products: https://www.zltdata.com/en/products/
+
+## 联系方式
+- 公司：河北泽雷特电子科技有限公司
+- 品牌：THELEADER / 泽雷特
+- 地址：河北省石家庄市鹿泉区大河镇南故城村建业街28号
+- 电话 / 微信（同号）：18603311919（选型咨询，创始人高林）
+- 邮箱：gl@zltdata.com
+- 官网：https://www.zltdata.com

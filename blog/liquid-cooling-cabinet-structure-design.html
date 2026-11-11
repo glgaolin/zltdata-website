@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<title>液冷机柜柜体结构设计：承重、尺寸、密封、凝露、漏液导流逐项拆解 | 泽雷特 THELEADER</title>
+<meta name="description" content="从柜体制造视角拆解液冷柜：满载1.1-2.1吨承重设计、1200mm深度与800mm宽度、湿区干区隔离、IP防护等级、漏液三层防护、五种漏液检测方式对比、凝露机理与露点控制、抗震要求。">
+<meta name="keywords" content="液冷机柜柜体,机柜承重,1200mm机柜,机柜密封,漏液检测,凝露控制,液冷机柜结构,抗震机柜">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://www.zltdata.com/blog/liquid-cooling-cabinet-structure-design.html">
+<meta property="og:title" content="液冷机柜的柜体，和风冷柜根本不是一回事：承重、结构、密封、凝露、漏液导流逐项拆">
+<meta property="og:description" content="从柜体制造视角拆解液冷柜：满载1.1-2.1吨承重设计、1200mm深度与800mm宽度、湿区干区隔离、IP防护等级、漏液三层防护、五种漏液检测方式对比、凝露机理与露点控制、抗震要求。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.zltdata.com/blog/liquid-cooling-cabinet-structure-design.html">
+<meta property="og:image" content="https://www.zltdata.com/images/og-image.jpg">
+<meta property="og:site_name" content="泽雷特 THELEADER">
+<meta property="article:published_time" content="2026-10-21">
+<meta property="article:author" content="高林">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.zltdata.com/images/og-image.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "液冷机柜的柜体，和风冷柜根本不是一回事：承重、结构、密封、凝露、漏液导流逐项拆", "description": "从柜体制造视角拆解液冷柜：满载1.1-2.1吨承重设计、1200mm深度与800mm宽度、湿区干区隔离、IP防护等级、漏液三层防护、五种漏液检测方式对比、凝露机理与露点控制、抗震要求。", "author": {"@type": "Person", "@id": "https://www.zltdata.com/about/gao-lin.html#person", "name": "高林", "url": "https://www.zhihu.com/people/gao-lin-95-79-41"}, "publisher": {"@id": "https://www.zltdata.com/#organization"}, "datePublished": "2026-10-21", "dateModified": "2026-10-21", "mainEntityOfPage": "https://www.zltdata.com/blog/liquid-cooling-cabinet-structure-design.html", "image": "https://www.zltdata.com/images/og-image.jpg", "inLanguage": "zh-CN", "about": ["液冷机柜", "机柜承重", "漏液检测", "凝露", "机柜结构"], "wordCount": 5862}</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.zltdata.com/"}, {"@type": "ListItem", "position": 2, "name": "博客", "item": "https://www.zltdata.com/blog/"}, {"@type": "ListItem", "position": 3, "name": "液冷机柜的柜体，和风冷柜根本不是一回事：承重、结构、密封、凝"}]}</script>
+<style>:root{--teal:#27C3C4;--dark:#142824;--blue:#0d47a1;--white:#fff;--gray:#8A9A96;--gray-l:#F5F7F7;--border:#E2E7EA;--text:#333}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",-apple-system,sans-serif;color:var(--text);line-height:2;background:var(--white)}nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}.nav-inner{max-width:1260px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}.nav-brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--dark);text-decoration:none}.nav-brand img{height:36px}article{max-width:780px;margin:0 auto;padding:48px 24px 80px}h1{font-size:clamp(24px,4vw,36px);font-weight:900;color:var(--dark);margin-bottom:16px;line-height:1.4}.meta{font-size:13px;color:var(--gray);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}.meta a{color:var(--blue);text-decoration:none}.summary-box{background:var(--gray-l);padding:20px 28px;border-radius:10px;margin-bottom:32px;font-size:16px;border-left:4px solid var(--teal)}h2{font-size:22px;font-weight:700;color:var(--dark);margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--teal)}h3{font-size:18px;font-weight:700;color:var(--dark);margin:28px 0 12px}h4{font-size:16px;font-weight:700;color:var(--dark);margin:22px 0 10px}p{margin:0 0 18px;font-size:16px}blockquote{background:var(--gray-l);padding:16px 24px;border-radius:8px;margin:24px 0;border-left:4px solid var(--teal);font-size:15px;color:#555}blockquote strong{color:var(--dark)}strong{color:var(--dark)}ul,ol{margin:0 0 18px 24px}li{font-size:16px;margin-bottom:6px}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:15px}th,td{border:1px solid var(--border);padding:10px 14px;text-align:left}th{background:var(--gray-l);font-weight:700;color:var(--dark)}.cta-box{background:linear-gradient(135deg,var(--blue),var(--dark));color:var(--white);padding:28px 32px;border-radius:14px;margin:40px 0;text-align:center}.cta-box a{color:var(--teal);font-weight:700;text-decoration:none}footer{background:var(--dark);color:rgba(255,255,255,.55);text-align:center;padding:32px 24px;font-size:13px;line-height:2}footer a{color:var(--teal);text-decoration:none}@media(max-width:768px){article{padding:32px 16px}h1{font-size:22px}p,li{font-size:15px}table{font-size:13px}th,td{padding:8px 10px}}
+.author-box{background:linear-gradient(135deg,var(--dark),var(--blue));color:var(--white);padding:32px;border-radius:12px;margin-top:40px;line-height:1.8}
+.author-box .name{font-size:18px;font-weight:700;color:var(--teal);margin-bottom:8px}
+.author-box p{font-size:14px;opacity:.9;margin-bottom:0}
+.author-box .contact{font-size:13px;opacity:.75;margin-top:12px}
+
+h2{margin-top:44px;padding-left:12px;border-left:4px solid var(--teal)}
+h3{margin-top:30px;color:var(--dark)}
+h4{margin-top:22px}
+ul,ol{padding-left:26px;margin:14px 0}
+li{margin:6px 0}
+table{display:block;overflow-x:auto;max-width:100%}
+pre{background:var(--gray-l);border:1px solid var(--border);border-radius:6px;padding:14px 16px;overflow-x:auto;line-height:1.7;font-size:14px;margin:16px 0}
+code{background:var(--gray-l);padding:1px 5px;border-radius:3px;font-size:14px}
+.related-box{background:var(--gray-l);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin:34px 0 0}
+.related-box h3{margin:0 0 10px;font-size:17px;color:var(--dark)}
+.related-box ul{padding-left:22px;margin:0}
+.related-box li{margin:5px 0;font-size:15px}
+</style>
+</head><body>
+<nav><div class="nav-inner"><a href="../index.html" class="nav-brand"><img src="../images/logo.png" alt="泽雷特">THELEADER 泽雷特</a></div></nav>
+
+<article>
+<h1>液冷机柜的柜体，和风冷柜根本不是一回事：承重、结构、密封、凝露、漏液导流逐项拆</h1>
+<div class="meta">2026-10-21 · 河北泽雷特-老高 · 原创</div>
+
+<div class="summary-box"><strong>导读：</strong>液冷柜不是"风冷柜加几根管子"。满载两吨的承重、1200mm 的深度、湿区干区的隔离、凝露的隐形杀伤、漏液的三层防护——每一处都和普通机柜不一样。这篇从柜体制造的角度逐项拆开讲。</div>
+
+<p>有个客户跟我说过一句话，我记到现在："液冷柜不就是在普通机柜里装几块冷板、接两根管子吗？你们报的价凭什么贵那么多？"</p>
+
+<p>我当场没反驳，带他去车间看了一台正在装配的液冷柜，让他自己抱了一下那根不锈钢 Manifold 主管，又让他看了一眼柜体底部那圈导流槽和接水盘。他抱完之后说了句："这玩意儿确实不是一回事。"</p>
+
+<p>从外面看，液冷柜和风冷柜都是个铁盒子，42U，黑漆漆的。但从制造的角度，这两者的差异，比很多人想象的大得多。柜体结构、承重设计、密封逻辑、管路走线、凝露控制、漏液导流——<strong>每一项的考虑方式都不一样</strong>。</p>
+
+<p>我是做柜体的，这篇就从"造柜子的人"的视角，把液冷机柜的结构设计逐项拆开讲。这中间很多内容，是你在厂商样本和参数表上看不到的。</p>
+
+<hr>
+
+<h2>一、承重：第一个被低估的指标</h2>
+
+<p>风冷柜的承重，行业里通常做到 800–1500kg 静态。这个数字对通用服务器来说绰绰有余。</p>
+
+<p>液冷柜不行。</p>
+
+<h3>液冷柜到底有多重？</h3>
+
+<p>我们把一台 42U 液冷柜满配之后的重量拆开算：</p>
+
+<table>
+<tr><th>组成部分</th><th>风冷柜（通用服务器）</th><th>液冷柜（GPU 服务器）</th></tr>
+<tr><td>服务器本身</td><td>42U × 约 15–20kg = 600–800kg</td><td>常见 8 卡 GPU 服务器单台 60–100kg，10–16 台 = 800–1600kg</td></tr>
+<tr><td>冷板 + 快接头 + 支管</td><td>无</td><td>每台增加 5–10kg，合计 80–150kg</td></tr>
+<tr><td>柜内 Manifold 主管 + 阀门</td><td>无</td><td>40–80kg</td></tr>
+<tr><td>冷却液（运行时）</td><td>无</td><td>30–80kg</td></tr>
+<tr><td>柜体自重</td><td>120–180kg</td><td>180–280kg（加强结构）</td></tr>
+<tr><td><strong>合计</strong></td><td><strong>约 700–1000kg</strong></td><td><strong>约 1100–2100kg</strong></td></tr>
+</table>
+
+<p>注意，这还没算那些更极端的整机柜方案。像 NVIDIA GB200 NVL72 这类液冷整机柜，整柜重量能到 1300–1500kg 以上，而且是不可拆卸的整体交付。</p>
+
+<h3>承重设计要改哪几处？</h3>
+
+<p><strong>1. 立柱和框架截面</strong><br>
+普通柜体立柱用 1.5mm 冷轧钢板折弯就行。液冷柜我们一般上到 2.0mm，关键受力部位加加强筋，或者在立柱内部增加加强衬板。这不是"多用了点料"，是结构计算的结果。</p>
+
+<p><strong>2. 托盘和导轨</strong><br>
+这是最容易出问题的地方。通用服务器的托盘按 50–80kg 设计没问题，但一台 GPU 服务器 100kg 压上去，普通托盘会肉眼可见地下挠。我们做过测试，某品牌的标称 80kg 托盘，在 100kg 静载 72 小时后，永久变形超过 3mm——<strong>这 3mm 会让导轨对不上位，服务器推不进去</strong>。</p>
+
+<p>液冷柜的托盘要按 120–150kg 额定承载来设计，而且要做加强型（加厚板材 + 折弯高度增加 + 增加支撑点）。</p>
+
+<p><strong>3. 底座与调平</strong><br>
+柜体底座要能承受满载重量，且调平脚/脚轮的承载能力要匹配。液冷柜满载 2 吨，普通脚轮直接压爆。</p>
+
+<p><strong>4. 与楼板承重的匹配</strong><br>
+这一条经常被忽略。很多存量机房的楼板承重是 800–1000 kg/m²，高架地板是 1000–1200 kg/m²（集中载荷）。一台液冷柜占地约 0.72–1.0 m²，满载 1.5 吨的分布载荷，很可能<strong>超过原机房的楼板设计值</strong>。</p>
+
+<p>改造项目在做方案之前，第一件事是找原设计院的建筑图，确认楼板承重。这件事我在《风液混布：老机房不停机上液冷的分步改造路线图》里会展开讲。</p>
+
+<h3>运输状态 vs 运行状态</h3>
+
+<p>这里有个细节：液冷柜在<strong>运输时必须是空的</strong>。管路里不能有液体，否则：</p>
+
+<ul><li>重量增加几十公斤，装卸困难</li><li>运输颠簸导致液体冲击接头</li><li>温度变化时液体膨胀/结冰</li></ul>
+
+<p>所以出厂前要做排空、吹扫、干燥处理，必要时充氮保压。到现场注液前再做一次保压检漏。这个流程要写进合同和验收单。</p>
+
+<hr>
+
+<h2>二、尺寸：宽度、深度、高度都得重新算</h2>
+
+<h3>深度：1200mm 是起步</h3>
+
+<p>风冷服务器柜常见深度是 1000mm 或 1100mm，深度 1000mm 能装下大部分通用服务器（机身 700–800mm）。</p>
+
+<p>液冷柜不行，因为柜内后方要"让出"一块空间给管路。</p>
+
+<p>柜内深度的构成：</p>
+
+<ul><li>服务器机身：750–900mm（GPU 服务器普遍偏长）</li><li>后部管路空间：<strong>150–250mm</strong>（Manifold 主管 + 支管 + 快接头 + 弯曲半径）</li><li>后门内侧余量：30–50mm</li></ul>
+
+<p>加在一起，<strong>液冷柜的深度通常要 1200mm，部分高密度方案要 1300mm 甚至更深</strong>。</p>
+
+<p>如果你看到某个液冷方案宣称"600×1000 就能做 40kW"，你就得问一句：管路走哪？快接头插拔手伸得进去吗？</p>
+
+<h3>宽度：600 还是 800？</h3>
+
+<ul><li><strong>600mm</strong>：标准 19 英寸，占地省，但两侧几乎没有多余空间，管路和线缆都要挤在后部</li><li><strong>800mm</strong>：两侧各多出 100mm，可以一侧走电源线/网线，一侧预留管路或维护空间</li></ul>
+
+<p>在高密度液冷场景，我更倾向推荐 800mm 宽。多出来的 200mm 占地，换来的是运维时的手能伸进去——这个价值在出故障的那天会体现得淋漓尽致。</p>
+
+<h3>高度：42U 之外还有更多选择</h3>
+
+<ul><li><strong>42U</strong>：标准，适配大多数机房层高</li><li><strong>47U/48U</strong>：在不增加占地的前提下多出 5–6U 空间，适合密度爬升但空间受限的项目</li><li><strong>52U/54U</strong>：高密整机柜方案，对层高要求高（净高至少 3.0–3.6m）</li></ul>
+
+<p>选高度要考虑的不只是层高，还有<strong>运输通道</strong>。柜子在工厂装好，能不能进电梯、能不能过门、能不能上车，这些都是真问题。47U 的柜子比 42U 高 250mm 左右，有些老机房的门框就是过不去。</p>
+
+<h3>前后维护空间</h3>
+
+<p>液冷柜的维护空间要求比风冷柜大，因为：</p>
+
+<ul><li>快接头插拔需要手和工具的操作空间</li><li>服务器推拉（100kg 的机器，导轨要完全抽出）</li><li>后部 Manifold 的检修</li></ul>
+
+<p>建议：<strong>前面预留 1000–1200mm，后面预留 1000–1200mm</strong>。如果管路走在后部，后侧至少 1000mm。</p>
+
+<hr>
+
+<h2>三、柜内布局：液体走哪，电走哪</h2>
+
+<p>这是液冷柜设计里最见功力的地方。布局不合理，后面全是麻烦。</p>
+
+<h3>分区原则</h3>
+
+<p>行业里比较通行的做法：</p>
+
+<p><strong>方案 A：后部走液，两侧/上部走电</strong>（最常见）</p>
+
+<ul><li>Manifold 主管垂直安装在柜体后部两侧或中间</li><li>支管从后部引到每台服务器</li><li>PDU 安装在后部一侧或柜体中部</li><li>强弱电缆走柜体两侧或前部理线槽</li></ul>
+
+<p><strong>方案 B：底部走液，上部走电</strong></p>
+
+<ul><li>主管从柜底进入，Manifold 水平布置在柜底</li><li>支管向上引到各服务器</li><li>电缆从顶部进入</li></ul>
+
+<p><strong>方案 C：顶部走液（吊装式 Manifold）</strong></p>
+
+<ul><li>少数整机柜方案采用</li></ul>
+
+<h3>关键的几条硬规则</h3>
+
+<p><strong>1. 液体管路不能走在电气设备上方</strong><br>
+这是最基本的一条，也是最容易违反的一条。PDU、母线排、电源模块一旦被上方的管路漏液淋到，后果是短路和火灾风险。<br>
+正确做法：管路在下或者在侧面，电气在上或者在另一侧。</p>
+
+<p><strong>2. 强弱电与管路保持间距</strong><br>
+金属管路会干扰信号线，且振动可能磨损线缆。一般要求平行间距 ≥ 50mm，交叉处做隔离。</p>
+
+<p><strong>3. 快接头处留够操作空间</strong><br>
+快接头插拔不是"按进去"那么简单。盲插接头需要服务器推入时的导向和浮动容差，手动接头需要手指/扳手的空间。<strong>每个接头周围至少留 100–150mm 的操作空间</strong>。</p>
+
+<p><strong>4. 软管弯曲半径要够</strong><br>
+快接头到服务器之间通常用软管（波纹管或橡胶管）。软管有最小弯曲半径要求，一般是管径的 5–8 倍。强行小半径弯折会导致：流量受限、软管疲劳开裂、接头受力泄漏。</p>
+
+<p><strong>5. 管路要有独立支撑</strong><br>
+管路不能靠接头和服务器承重。每一段管路都要有管夹/支架固定到柜体框架上，间距一般 500–800mm。否则运行中的振动会让接头松动。</p>
+
+<hr>
+
+<h2>四、密封与防护等级：要不要 IP54？</h2>
+
+<p>风冷柜为了散热，门板开孔率通常做到 65%–80%（网孔门）。IP 等级基本就是 IP20，防个手指触摸。</p>
+
+<p>液冷柜的取舍变了。</p>
+
+<h3>液冷柜需要多高的防护等级？</h3>
+
+<p>先看液冷柜的散热负担：冷板带走了 70%–80% 的热量，剩下的 20%–30%（电源、硬盘、网卡、VRM、内存的部分热量）还是要靠风。所以液冷柜<strong>依然需要通风</strong>，不能做成全封闭。</p>
+
+<p>但另一方面，液冷柜里有液体，防尘防异物的要求反而更高：</p>
+
+<ul><li>灰尘进入冷板翅片会堵塞（虽然冷板是封闭流道，但外部翅片和风扇还是怕灰）</li><li>异物掉入接水盘会干扰液位检测</li><li>导电粉尘 + 潮湿 = 短路风险</li></ul>
+
+<p><strong>我们的做法</strong>：主体仍采用网孔门（保证剩余风冷），但在几个关键位置做密封处理：</p>
+
+<ul><li><strong>进出管口</strong>：使用电缆格兰头/管路穿墙密封件，不能简单开孔</li><li><strong>门缝</strong>：加密封胶条，防止外部灰尘从门缝大量进入</li><li><strong>顶部和底部穿线孔</strong>：毛刷 + 密封胶条组合</li><li><strong>接水盘区域</strong>：这个区域是"湿区"，与电气区做物理隔离</li></ul>
+
+<p>至于 IP54，那是在有特殊环境要求（粉尘、潮湿、工业现场）时才做的。盲目把液冷柜做成 IP54，会牺牲通风面积，剩余风冷处理不了，反而得不偿失。</p>
+
+<p><strong>防护等级不是越高越好，是要匹配场景。</strong></p>
+
+<hr>
+
+<h2>五、漏液防护：三层设计，缺一层都不行</h2>
+
+<p>所有液冷厂商都会说"我们做了漏液检测"。但漏液防护不是装个传感器就完事，它是一套三层体系。</p>
+
+<h3>第一层：不漏</h3>
+
+<p>这是源头，靠的是：</p>
+
+<ul><li><strong>接头质量</strong>：快接头必须是工业级，有明确的插拔寿命指标（一般 ≥ 1000 次，好的能到 10000 次）、自密封（断开时泄漏量 &lt; 0.1mL）、防误插键位设计</li><li><strong>焊接质量</strong>：不锈钢管路用自动氩弧焊，焊后做 X 光或内窥镜检查，然后酸洗钝化</li><li><strong>材质正确</strong>：二次侧主管用 316L 不锈钢，密封件用 EPDM 或氟橡胶，杜绝镀锌件</li><li><strong>压力测试</strong>：出厂前 1.5 倍工作压力保压测试，通常保压 30 分钟到 24 小时，压降不超过规定值</li><li><strong>清洁度</strong>：管路内壁清洁度等级控制，焊渣、金属屑是堵塞冷板的元凶</li></ul>
+
+<h3>第二层：漏了能立刻发现</h3>
+
+<p>检测手段要<strong>多手段冗余</strong>，单靠一种不够：</p>
+
+<table>
+<tr><th>检测方式</th><th>原理</th><th>优点</th><th>局限</th></tr>
+<tr><td><strong>漏液检测绳（线缆式）</strong></td><td>液体接触改变线缆阻抗</td><td>可覆盖整条路径，定位到米级</td><td>只能检测绳铺设的位置</td></tr>
+<tr><td><strong>点式传感器</strong></td><td>电极接触导通</td><td>便宜，布置灵活</td><td>只能检测点位</td></tr>
+<tr><td><strong>接水盘液位开关</strong></td><td>浮子/电极检测积水</td><td>简单可靠，作为最后兜底</td><td>攒够一定量才报警</td></tr>
+<tr><td><strong>CDU 流量/压力差监测</strong></td><td>供回流量差、系统补液速率</td><td>能发现微小渗漏，是最灵敏的</td><td>精度要求高，小系统不明显</td></tr>
+<tr><td><strong>柜内温湿度突变监测</strong></td><td>泄漏导致局部湿度飙升</td><td>辅助手段</td><td>滞后</td></tr>
+</table>
+
+<p><strong>我建议的布点是</strong>：柜体底部接水盘至少 1 个液位检测点，Manifold 下方沿管路铺一条检测绳，同时在 CDU 侧做流量差监测。三套并行，成本增加不了多少，但漏检概率大幅下降。</p>
+
+<h3>第三层：漏了不扩大</h3>
+
+<p>这是很多人不做、但最该做的一层：</p>
+
+<ul><li><strong>接水盘 + 导流槽</strong>：柜体底部做一体的接水盘（不锈钢或喷涂钢板），有坡度把液体导向集液区</li><li><strong>管路走向</strong>：主管道尽量走柜体底部或后下方，不要从服务器顶部横穿</li><li><strong>电气上置</strong>：PDU、端子排、监控模块安装在柜体中上部，远离可能的积液区</li><li><strong>分区隔离</strong>：湿区（管路、Manifold）和干区（电气、监控）之间做挡水结构</li><li><strong>漏液联动策略</strong>：这个很重要——<strong>检测到漏液，第一步是告警和定位，不是立即断电</strong>。盲目断电可能造成更大的业务损失。正确策略是：告警 → 远程确认 → 按预案决定是否切负载 → 关断对应支路阀门。</li></ul>
+
+<p>漏液联动的逻辑，需要和<a href="https://www.zltdata.com/products/dcim.html">机房动环监控系统 DCIM</a>打通，把漏液告警、温湿度、电力参数放在同一个平台上看，运维人员才能在几分钟内做出正确判断。</p>
+
+<hr>
+
+<h2>六、凝露：液冷柜最隐蔽的杀手</h2>
+
+<p>这是我一定要单独拿一节讲的东西，因为它太容易被忽略，而出事的时候又特别致命。</p>
+
+<h3>凝露是怎么发生的？</h3>
+
+<p>原理很简单：<strong>当冷板表面的温度低于机房空气的露点温度时，空气中的水蒸气就会在冷板和管路上凝结成水珠。</strong></p>
+
+<p>这些水珠会：</p>
+
+<ul><li>滴到板卡上 → 短路</li><li>附着在接头上 → 加速腐蚀</li><li>流入接水盘 → 触发漏液报警（但其实根本没漏，是凝露）—— 这种"假报警"同样让人头疼</li></ul>
+
+<h3>露点是多少？先算一下</h3>
+
+<p>机房环境的典型参数与对应露点：</p>
+
+<table>
+<tr><th>干球温度</th><th>相对湿度</th><th>露点温度</th></tr>
+<tr><td>24℃</td><td>50%</td><td>约 13.0℃</td></tr>
+<tr><td>23℃</td><td>50%</td><td>约 12.0℃</td></tr>
+<tr><td>22℃</td><td>45%</td><td>约 9.5℃</td></tr>
+<tr><td>25℃</td><td>40%</td><td>约 10.5℃</td></tr>
+<tr><td>27℃</td><td>60%</td><td>约 18.8℃</td></tr>
+</table>
+
+<p>很多机房相对湿度控制得比较松，尤其是夏季或者加湿系统失控的时候，露点可能到 15–18℃ 甚至更高。</p>
+
+<h3>供液温度怎么定？</h3>
+
+<p><strong>核心原则：供液温度 ≥ 机房露点温度 + 安全余量（一般取 3–5℃）。</strong></p>
+
+<p>具体建议值：</p>
+
+<ul><li>常规冷板系统：<strong>供液温度设定在 25–32℃</strong></li><li>高温水方案（配合自然冷却）：<strong>30–40℃</strong></li><li>极限低温方案（少数高性能计算）：<strong>不低于 20℃，且必须做柜内湿度严格控制</strong></li></ul>
+
+<p>看到这里你可能会问：水温高了，散热效果不就差了吗？</p>
+
+<p><strong>不会，这是液冷相对风冷最大的优势之一。</strong> 液体的换热效率远高于空气，即使在 35℃ 供液温度下，冷板依然能把 GPU 结温控制在合理范围（一般 GPU 结温上限在 80–90℃，冷板方案的结温通常能控制在 60–75℃）。而且水温越高，一次侧的自然冷却小时数越多，PUE 越低。</p>
+
+<p><strong>ASHRAE 的液冷水温等级</strong>（W17/W27/W32/W40/W45）就是基于这个逻辑划分的——等级越高的设施，允许使用温度越高的冷却水，节能潜力越大。更多关于温度等级的内容，我会单独写一篇讲标准。</p>
+
+<h3>凝露的三个防控层次</h3>
+
+<p><strong>1. 控制供液温度</strong><br>
+CDU 侧做露点跟随控制：实时采集机房温湿度，计算露点，自动把供液温度维持在露点 + 安全余量之上。这是最根本的手段。<strong>买 CDU 的时候，一定要确认它有没有露点跟随功能</strong>，这是硬指标。</p>
+
+<p><strong>2. 柜内温湿度监测</strong><br>
+在柜内关键位置（冷板进出水口附近、Manifold 附近、柜体上部）布置温湿度传感器，接入 DCIM。一旦局部湿度异常飙升，立刻告警。</p>
+
+<p><strong>3. 机房环境控制</strong><br>
+把机房相对湿度控制在 40%–55% 区间，减少露点波动。这一条要和<a href="https://www.zltdata.com/products/precision-ac.html">精密空调</a>的加湿/除湿策略联动。</p>
+
+<h3>一个真实的教训</h3>
+
+<p>某项目调试阶段，为了测试极限散热能力，工程师把供液温度临时调到 18℃。跑了不到两小时，柜内开始出现凝露，一台服务器的冷板接口下方形成水珠，滴到 PCIe 插槽上，烧毁一张卡。损失几十万，还停了两天业务。</p>
+
+<p><strong>调试阶段也要注意供液温度下限。</strong> 我建议在调试规程里明确写死：任何工况下供液温度不得低于 XX℃（按当地夏季露点计算），并且这条要写进操作手册和培训内容。</p>
+
+<hr>
+
+<h2>七、风液混合：液冷带走了 70%–80%，剩下的怎么办</h2>
+
+<p>很多人以为上了液冷，机房就不用风冷了。这是个误解。</p>
+
+<h3>液冷覆盖率到底是多少？</h3>
+
+<p>冷板不是万能的。它能覆盖的是：</p>
+
+<ul><li>CPU ✅</li><li>GPU ✅</li><li>部分内存 ✅（需要专门的内存冷板）</li><li>部分 VRM ✅</li></ul>
+
+<p>它覆盖不了的是：</p>
+
+<ul><li>电源模块（PSU）❌</li><li>硬盘 ❌</li><li>网卡、光模块 ❌</li><li>主板上的其他小发热元件 ❌</li></ul>
+
+<p>所以典型冷板方案的<strong>液冷覆盖率在 70%–80%</strong> 之间，剩下 20%–30% 的热量仍需要风冷带走。</p>
+
+<p>一台 30kW 的液冷柜，剩余风冷量大约是 <strong>6–9kW</strong>。一台 40kW 的柜，剩余风冷量约 8–12kW。</p>
+
+<p><strong>6–12kW/柜的风冷量，不是靠柜内几个小风扇能解决的</strong>，它需要：</p>
+
+<ul><li>机房仍要有基础制冷（精密空调或列间空调）</li><li>柜内要有合理的风道设计</li><li>后门辅助散热（可选）</li></ul>
+
+<h3>液冷柜的"风"怎么组织？</h3>
+
+<p><strong>方案一：保留网孔门 + 机房级制冷</strong><br>
+最常见。冷板带走大头，机房空调处理剩余热量。此时机房回风温度会偏高（液冷柜排出的风量小但温度高），对空调选型有影响。</p>
+
+<p><strong>方案二：柜内风扇增强</strong><br>
+在柜体顶部或后部增加风扇模块，强制把剩余热量排出。要注意风扇本身的功耗和噪音。</p>
+
+<p><strong>方案三：后门热交换（RDHx）</strong><br>
+把后门做成带换热盘管的热交换门，用冷冻水（或二次侧冷却水）在门内做热交换。这能把柜内的风冷负荷"就地消化"，机房几乎不需要额外制冷。<br>
+RDHx 的缺点是：后门变重、成本上升、后部维护空间要求更大、门内盘管本身也是漏水风险点。</p>
+
+<p><strong>我的建议</strong>：如果机柜密度在 25–40kW 且冷板覆盖率能做到 75% 以上，方案一（网孔门 + 机房制冷）性价比最高，配一台<a href="https://www.zltdata.com/products/precision-ac.html">精密空调</a>做基础保障即可。如果密度更高或者机房制冷已经饱和，再考虑 RDHx。</p>
+
+<p>另外，<a href="https://www.zltdata.com/products/cold-aisle.html">冷通道封闭</a>在液冷机房里依然有价值——它可以让剩余那部分风冷负荷处理得更高效，同时避免局部热点。</p>
+
+<hr>
+
+<h2>八、抗震与运输：满载两吨的柜子，晃一下就是事故</h2>
+
+<h3>抗震</h3>
+
+<p>液冷柜的抗震要求比风冷柜高，原因有二：</p>
+
+<ol><li><strong>重量大</strong>：惯性力与质量成正比，同样加速度下受力更大</li><li><strong>重心高</strong>：满载时重心偏上，倾覆力矩大</li></ol>
+
+<p>国内相关的标准是 GB 50981《建筑机电工程抗震设计规范》，数据中心机柜通常要求按抗震设防烈度（7 度、8 度或更高）做抗震验算或抗震测试。</p>
+
+<p>柜体侧要做的是：</p>
+
+<ul><li>柜体与地面的抗震固定（抗震地脚、膨胀螺栓）</li><li>并柜连接（多台柜并柜后的整体刚度）</li><li>顶部抗震支撑（层高较高时）</li><li>管路柔性连接（避免刚性管路在振动中断裂）</li></ul>
+
+<h3>运输</h3>
+
+<p>液冷柜的运输有特殊要求：</p>
+
+<ol><li><strong>排空</strong>：管路内不能留液体</li><li><strong>干燥</strong>：排空后吹扫，防止残留水分腐蚀或结冰</li><li><strong>保压/充氮</strong>：部分厂家充少量氮气保压，到现场能验证密封性</li><li><strong>管路固定</strong>：运输中管路要额外固定，避免颠簸松动</li><li><strong>快接头保护</strong>：接头加保护帽，防止进灰和磕碰</li><li><strong>装卸方式</strong>：满载柜体不能用普通叉车随便叉，要用专用搬运设备</li></ol>
+
+<p><strong>这些要写进合同</strong>。我就遇到过厂家运输时没排空，到现场发现接头冻裂的案例——冬天，北方，液体在管路里结冰膨胀。</p>
+
+<hr>
+
+<h2>九、材质与工艺：看不见的地方最见真章</h2>
+
+<table>
+<tr><th>部位</th><th>材质/工艺要求</th><th>为什么</th></tr>
+<tr><td>立柱、框架</td><td>2.0mm 及以上优质冷轧钢板（宝钢/鞍钢）</td><td>承重需要</td></tr>
+<tr><td>表面处理</td><td>脱脂 → 磷化 → 静电粉末喷涂</td><td>防腐，机房环境湿度波动大</td></tr>
+<tr><td>管路支架</td><td>不锈钢 + 绝缘垫片</td><td>防电化学腐蚀</td></tr>
+<tr><td>接水盘</td><td>不锈钢（304/316L）或优质喷涂钢板 + 防腐涂层</td><td>长期接触液体</td></tr>
+<tr><td>密封件</td><td>EPDM / 氟橡胶</td><td>见上一篇材料兼容性表</td></tr>
+<tr><td>接地</td><td>柜体、管路、门板做等电位跨接</td><td>静电防护 + 安全</td></tr>
+</table>
+
+<p><strong>一个容易忽略的点：等电位接地。</strong> 液冷系统的金属管路贯穿整个机柜，它本身就是一个导体。管路必须和柜体做等电位连接，柜体再接到机房接地排。否则：</p>
+
+<ul><li>静电积累可能损坏服务器</li><li>一旦发生漏电，管路带电，运维人员触摸有触电风险</li></ul>
+
+<p>我们在每台液冷柜上都做了明确的接地端子和跨接线，并且用黄绿双色线做标识。这是成本很低但非常必要的一笔投入。</p>
+
+<hr>
+
+<h2>十、液冷柜选型检查清单（10 项，逐条打勾）</h2>
+
+<ol><li>☐ <strong>静态承重</strong> ≥ 1500kg（高密度方案 ≥ 2000kg），并核对楼板/高架地板承重</li><li>☐ <strong>托盘承载</strong> ≥ 120kg/层，且做了满载变形测试</li><li>☐ <strong>柜体深度</strong> ≥ 1200mm，后部管路空间 ≥ 150mm</li><li>☐ <strong>快接头操作空间</strong>：每个接头周围 ≥ 100–150mm</li><li>☐ <strong>管路独立支撑</strong>，间距 500–800mm，有柔性段</li><li>☐ <strong>接水盘 + 导流槽 + 液位检测</strong>，湿区干区物理隔离</li><li>☐ <strong>漏液检测不少于 3 种手段</strong>（检测绳 + 点式 + CDU 流量差）</li><li>☐ <strong>CDU 支持露点跟随控制</strong>，供液温度下限有明确设定</li><li>☐ <strong>柜内温湿度传感器</strong>已接入 DCIM，且有凝露告警逻辑</li><li>☐ <strong>运输方案</strong>包含排空、干燥、保压、管路固定、接头保护</li></ol>
+
+<p>这份清单，是我这些年做液冷柜项目攒下来的。拿去对着厂家的方案一条条问，答不上来的，就是风险点。</p>
+
+<hr>
+
+<h2>十一、最后说句实话</h2>
+
+<p>液冷机柜的门槛，不在于"能不能做"，而在于"做出来能不能稳定跑五年"。</p>
+
+<p>柜体结构、承重、密封、凝露、漏液导流，这些东西在参数表上体现不出来，在效果图上更看不见。它们只在两个时刻显现价值：一个是出事的那天，一个是五年后回顾故障率和运维成本的时候。</p>
+
+<p>我们做<a href="https://www.zltdata.com/products/liquid-cooling-cabinet.html">液冷温控机柜</a>，在这些看不见的地方花的功夫，比看得见的地方多得多。说白了，这也是为什么我一直建议：买机柜要看工厂，要看实物，要看细节。</p>
+
+<p>有项目在选型阶段的，欢迎来我们鹿泉的工厂实地看。抱一抱那根主管，摸一摸接水盘的焊缝，比看十份样本有用。</p>
+
+<hr>
+
+<div class="related-box"><h3>相关阅读</h3>
+
+<ul><li><a href="https://www.zltdata.com/blog/liquid-cooling-coolant-selection.html">液冷机柜里的"血"：冷却液怎么选？</a></li><li><a href="https://www.zltdata.com/blog/liquid-cooling-rack-deep-dive.html">液冷机柜深度解析：从技术原理到部署实战</a></li><li><a href="https://www.zltdata.com/blog/100kw-liquid-cooling-selection-guide.html">单柜 100kW 怎么散热？液冷机柜的选型避坑指南</a></li><li><a href="https://www.zltdata.com/blog/server-rack-buying-guide.html">服务器机柜怎么选？从材质承重到散热布局，一文讲透不踩坑</a></li><li><a href="https://www.zltdata.com/blog/how-server-cabinet-manufactured.html">工厂实地探访：机柜是怎么生产的</a></li></ul></div>
+
+<div class="related-box"><h3>相关产品</h3>
+
+<ul><li><a href="https://www.zltdata.com/products/liquid-cooling-cabinet.html">液冷温控机柜</a> —— 冷板液冷，25–40kW/柜，支持 30–100kW/柜高密度</li><li><a href="https://www.zltdata.com/products/server-cabinet.html">标准服务器机柜</a> —— 承重 800–1500kg，42U/47U 可选</li><li><a href="https://www.zltdata.com/products/cold-aisle.html">冷通道封闭系统</a> —— 剩余风冷负荷的高效处理</li><li><a href="https://www.zltdata.com/products/dcim.html">机房动环监控系统 DCIM</a> —— 漏液、温湿度、电力一体化监测</li><li><a href="https://www.zltdata.com/products/precision-ac.html">精密空调</a> —— 液冷机房的基础制冷保障</li><li><a href="https://www.zltdata.com/products/pdu.html">PDU 机柜电源分配单元</a> —— 干区上置安装，远离管路</li></ul></div>
+
+<blockquote>作者：高林，河北泽雷特电子科技创始人，数据中心基础设施行业从业 20 年。<br>
+联系：18603311919 | www.zltdata.com</blockquote>
+
+<div class="cta-box">
+<p style="font-size:16px;margin-bottom:10px"><strong>🤝 拿不准你的机房适不适合上液冷？</strong></p>
+<p style="font-size:14px;opacity:.9;margin-bottom:0">私信我或直接打电话，<strong>免费上门做热密度评估</strong>，帮你判断液冷是否适合你的场景，以及用什么方案最划算——不管最后要不要做，评估本身不花钱。</p>
+<p style="font-size:13px;opacity:.75;margin-top:10px">📞 18603311919 | 📧 gl@zltdata.com | 🌐 <a href="https://www.zltdata.com" style="color:#27C3C4">www.zltdata.com</a></p>
+</div>
+
+<div class="author-box">
+  <div class="name">河北泽雷特-老高</div>
+  <p>做机柜20年了。自有工厂在河北，服务器机柜、智能一体柜、微模块数据中心，厂家直发，没有中间商。同时也做数据中心产品销售+机房运维，河北上千家企业的选择。机房有散热、扩容、运维方面的困惑？私信我，免费上门帮你看。</p>
+  <div class="contact">📞 18603311919 | 📧 gl@zltdata.com | 🌐 www.zltdata.com | 📖 zltdata.com/blog/</div>
+</div>
+</article>
+
+<footer>
+© 2026 河北泽雷特电子科技有限公司 | <a href="https://beian.miit.gov.cn/">冀ICP备18036691号-4</a> | 本站文章可自由引用，请保留出处和作者信息
+</footer>
+
+</body>
+</html>
